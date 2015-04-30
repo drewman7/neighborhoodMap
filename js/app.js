@@ -39,8 +39,9 @@ var mapView = function() {
   };
 };
 
-var ViewModel = function() {
-  mapView();
-};
+//var ViewModel = function() {
+//  mapView();
+//};
 
-ko.applyBindings(new ViewModel());
+//ko.applyBindings(new ViewModel());
+mapView();
