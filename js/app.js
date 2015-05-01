@@ -8,8 +8,8 @@ var mapView = function() {
   this.mapInitialize = function() {
     geocoder = new google.maps.Geocoder();
     var mapOptions = {
-      center: { lat: -34.397, lng: 150.644},
-      zoom: 6
+      center: { lat: 36.26, lng: -95.147},
+      zoom: 1
     };
     var map = new google.maps.Map(document.getElementById('map-canvas'),
         mapOptions);
