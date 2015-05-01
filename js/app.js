@@ -44,4 +44,8 @@ var mapView = function() {
 //};
 
 //ko.applyBindings(new ViewModel());
-ko.applyBindings(new mapView());
+$(function() {
+
+    ko.applyBindings(new mapView());
+});
+
