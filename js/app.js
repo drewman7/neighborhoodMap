@@ -40,7 +40,7 @@ var mapView = function() {
 };
 
 var viewModel = function() {
-  mapView();
+  new mapView();
 };
 
 //ko.applyBindings(new ViewModel());
