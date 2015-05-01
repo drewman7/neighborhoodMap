@@ -1,7 +1,7 @@
 var geocoder;
 
 
-var mapView = function() {
+var viewModel = function() {
 
   var self = this;
 
@@ -39,9 +39,6 @@ var mapView = function() {
   };
 };
 
-var viewModel = function() {
-  new mapView();
-};
 
 //ko.applyBindings(new ViewModel());
 $(function() {
