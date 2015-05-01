@@ -39,13 +39,13 @@ var mapView = function() {
   };
 };
 
-//var ViewModel = function() {
-//  mapView();
-//};
+var viewModel = function() {
+  mapView();
+};
 
 //ko.applyBindings(new ViewModel());
 $(function() {
 
-    ko.applyBindings(new mapView());
+    ko.applyBindings(new viewModel());
 });
 
