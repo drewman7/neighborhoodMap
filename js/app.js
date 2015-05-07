@@ -1,7 +1,7 @@
 var geocoder;
 
 var pageModel = function(){
-    pageTitle: ko.observable();
+    this.pageTitle = ko.observable();
 };
 
 var viewModel = function() {
@@ -10,7 +10,7 @@ var viewModel = function() {
 
   new pageModel();
 
-  pageModel.pageTitle("Neighborhood MAP!");
+  this.pageModel.pageTitle("Neighborhood MAP!");
 
   this.mapInitialize = function() {
     geocoder = new google.maps.Geocoder();
