@@ -1,9 +1,14 @@
 var geocoder;
 
+var pageModel = function(){
+    pageTitle: ko.observable();
+};
 
 var viewModel = function() {
 
   var self = this;
+
+  pageModel.pageTitle("Neighborhood MAP!");
 
   this.mapInitialize = function() {
     geocoder = new google.maps.Geocoder();
