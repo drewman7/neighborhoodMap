@@ -8,11 +8,7 @@ var viewModel = function() {
 
   var self = this;
 
-  //new pageModel();
-  //ko.applyBindings(new pageModel());
-
-  //this.pageModel.pageTitle("Neighborhood MAP!");
-  this.pageTitle = "Neighborhood MAP!";
+  this.pageTitle = ko.observable("Neighborhood MAP!");
 
   this.mapInitialize = function() {
     geocoder = new google.maps.Geocoder();
