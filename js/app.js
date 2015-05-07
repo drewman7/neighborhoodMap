@@ -8,6 +8,8 @@ var viewModel = function() {
 
   var self = this;
 
+  new pageModel();
+
   pageModel.pageTitle("Neighborhood MAP!");
 
   this.mapInitialize = function() {
