@@ -11,7 +11,7 @@ var viewModel = function() {
     geocoder = new google.maps.Geocoder();
     var mapOptions = {
       center: { lat: 36.26, lng: -95.147},
-      zoom: 1
+      zoom: 2
     };
     var map = new google.maps.Map(document.getElementById('map-canvas'),
         mapOptions);
@@ -26,14 +26,15 @@ var viewModel = function() {
         //map.setCenter(results[0].geometry.location);
         var mapOptions = {
           center: results[0].geometry.location,
-          zoom: 8
+          zoom: 12
         };
         var map = new google.maps.Map(document.getElementById('map-canvas'),
-            mapOptions);           
-        //var marker = new google.maps.Marker({
-        //    map: map,
-        //    position: results[0].geometry.location
-        //});
+            mapOptions);  
+                     
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
       } else {
         alert("Geocode was not successful for the following reason: " + status);
       }
