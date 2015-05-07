@@ -10,7 +10,7 @@ var viewModel = function() {
 
   new pageModel();
 
-  this.pageModel.pageTitle("Neighborhood MAP!");
+  pageModel.pageTitle("Neighborhood MAP!");
 
   this.mapInitialize = function() {
     geocoder = new google.maps.Geocoder();
