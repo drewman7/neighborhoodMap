@@ -1,5 +1,5 @@
 var geocoder;
-
+var map;
 
 var viewModel = function() {
 
@@ -13,7 +13,7 @@ var viewModel = function() {
       center: { lat: 36.26, lng: -95.147},
       zoom: 2
     };
-    var map = new google.maps.Map(document.getElementById('map-canvas'),
+    map = new google.maps.Map(document.getElementById('map-canvas'),
         mapOptions);
   };
   
@@ -28,7 +28,7 @@ var viewModel = function() {
           center: results[0].geometry.location,
           zoom: 10
         };
-        var map = new google.maps.Map(document.getElementById('map-canvas'),
+        map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);  
 
         var marker = new google.maps.Marker({
