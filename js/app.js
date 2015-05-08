@@ -1,10 +1,11 @@
 var modelData = {
   title: "Neighborhood MAP!",
-  geocoder: {}
+  geocoder: {},
+  map: {}
 }
 
 //var geocoder;
-var map;
+//var map;
 
 var viewModel = function() {
 
