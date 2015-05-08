@@ -1,8 +1,9 @@
 var modelData = {
-  title: "Neighborhood MAP!"
+  title: "Neighborhood MAP!",
+  geocoder: {}
 }
 
-var geocoder;
+//var geocoder;
 var map;
 
 var viewModel = function() {
@@ -12,7 +13,7 @@ var viewModel = function() {
   this.pageTitle = ko.observable(modelData.title);
 
   this.mapInitialize = function() {
-    geocoder = new google.maps.Geocoder();
+    modelData.geocoder = new google.maps.Geocoder();
     var mapOptions = {
       center: { lat: 36.26, lng: -95.147},
       zoom: 2
@@ -25,7 +26,7 @@ var viewModel = function() {
 
   this.codeAddress = function() {
     var address = document.getElementById("address").value;
-    geocoder.geocode( { 'address': address}, function(results, status) {
+    modelData.geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         //map.setCenter(results[0].geometry.location);
         var mapOptions = {
@@ -48,7 +49,7 @@ var viewModel = function() {
 
   this.codeMarker = function() {
     var markerAddress = document.getElementById("markerAddress").value;
-    geocoder.geocode( { 'address': markerAddress}, function(results, status) {
+    modelData.geocoder.geocode( { 'address': markerAddress}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         //map.setCenter(results[0].geometry.location);
         //var mapOptions = {
