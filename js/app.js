@@ -1,3 +1,7 @@
+var modelData = {
+  title: "Neighborhood MAP!"
+}
+
 var geocoder;
 var map;
 
@@ -5,7 +9,7 @@ var viewModel = function() {
 
   var self = this;
 
-  this.pageTitle = ko.observable("Neighborhood MAP!");
+  this.pageTitle = ko.observable(modelData.title);
 
   this.mapInitialize = function() {
     geocoder = new google.maps.Geocoder();
