@@ -68,19 +68,21 @@ var viewModel = function() {
 
   this.callback = function(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
-      markerList = results;
-      for (var i = 0; i < markerList.length; i++) {
-        self.createMarker(markerList[i]);
+      //markerList = results;
+      for (var i = 0; i < results.length; i++) {
+        self.createMarker(results[i], i);
       };
     };
   };
 
-  this.createMarker = function(place) {
+  this.createMarker = function(place, index) {
     var placeLoc = place.geometry.location;
     var marker = new google.maps.Marker({
       map: map,
       position: place.geometry.location
     });
+
+    markerList[index] = marker;
 
     google.maps.event.addListener(marker, 'click', function() {
       infowindow.setContent(place.name);
