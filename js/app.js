@@ -35,7 +35,7 @@ var viewModel = function() {
         //map.setCenter(results[0].geometry.location);
         var mapOptions = {
           center: results[0].geometry.location,
-          zoom: 10
+          zoom: 14
         };
         map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);  
