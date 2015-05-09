@@ -7,7 +7,11 @@ var modelData = {
   addressGeo: "",
   markerType: "",
   markerList: []
-}
+    {
+      marker: {},
+      info: {}
+    }
+};
 
 //var geocoder;
 //var map;
@@ -68,8 +72,9 @@ var viewModel = function() {
 
   this.callback = function(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
-      //markerList = results;
+      
       for (var i = 0; i < results.length; i++) {
+        modelData.markerList[i].info = results[i];
         self.createMarker(results[i], i);
       };
     };
@@ -82,7 +87,7 @@ var viewModel = function() {
       position: place.geometry.location
     });
 
-    modelData.markerList[index] = marker;
+    modelData.markerList[index].marker = marker;
 
     google.maps.event.addListener(marker, 'click', function() {
       infowindow.setContent(place.name);
@@ -92,7 +97,7 @@ var viewModel = function() {
 
   this.locMarkerClear = function() {
     for (var i = 0; i < modelData.markerList.length; i++) {
-      modelData.markerList[i].setMap(null);
+      modelData.markerList[i].marker.setMap(null);
     };
   };
 
