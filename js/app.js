@@ -91,7 +91,7 @@ var viewModel = function() {
   };
 
   this.locMarkerClear = function() {
-    for (var i = 0; i < markerList.length; i++) {
+    for (var i = 0; i < modelData.markerList.length; i++) {
       modelData.markerList[i].setMap(null);
     };
   };
