@@ -4,7 +4,8 @@ var modelData = {
   map: {},
   infowindow: {},
   address: "",
-  addressGeo: { lat: 36.26, lng: -95.147},
+  //addressGeo: { lat: 36.26, lng: -95.147},
+  addressGeo: { Lat: 43.25, Lng: -83.79},
   markerType: "",
   markerList: []
 }
@@ -43,11 +44,11 @@ var viewModel = function() {
         map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);  
 
-        var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location,
-            title: address
-        });
+        //var marker = new google.maps.Marker({
+        //    map: map,
+        //    position: results[0].geometry.location,
+        //    title: address
+        //});
       } else {
         alert("Geocode was not successful for the following reason: " + status);
       };
