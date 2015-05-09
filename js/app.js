@@ -4,7 +4,7 @@ var modelData = {
   map: {},
   infowindow: {},
   address: "",
-  addressGeo: { lat: 43.25, lng: -83.79},
+  addressGeo: "",
   markerType: "",
   markerList: []
 }
@@ -21,7 +21,7 @@ var viewModel = function() {
   this.mapInitialize = function() {
     modelData.geocoder = new google.maps.Geocoder();
     var mapOptions = {
-      center: addressGeo,
+      center: { lat: 43.25, lng: -83.79},
       zoom: 3
     };
     map = new google.maps.Map(document.getElementById('map-canvas'),
