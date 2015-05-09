@@ -62,7 +62,7 @@ var viewModel = function() {
     };
     infowindow = new google.maps.InfoWindow();
     var service = new google.maps.places.PlacesService(map);
-    service.nearbySearch(request, self.callback);
+    service.textSearch(request, self.callback);
   };
 
   this.callback = function(results, status) {
