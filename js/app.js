@@ -4,6 +4,7 @@ var modelData = {
   map: {},
   infowindow: {},
   address: "",
+  addressGeo: "",
   markerType: ""
 }
 
@@ -33,6 +34,7 @@ var viewModel = function() {
     modelData.geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         //map.setCenter(results[0].geometry.location);
+        addressGeo = results[0].geometry.location;
         var mapOptions = {
           center: results[0].geometry.location,
           zoom: 14
@@ -54,7 +56,7 @@ var viewModel = function() {
   this.locMarker = function() {
     markerType = document.getElementById("markerType").value;
     var request = {
-      location: address,
+      location: addressGeo,
       radius: 1000,
       types: ['store']
     };
