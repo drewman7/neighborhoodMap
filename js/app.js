@@ -69,7 +69,7 @@ var viewModel = function() {
         self.createMarker(results[i]);
       }
     }
-  }:
+  };
 
   this.createMarker = function(place) {
     var placeLoc = place.geometry.location;
