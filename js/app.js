@@ -71,8 +71,8 @@ var viewModel = function() {
       markerList = results;
       for (var i = 0; i < markerList.length; i++) {
         self.createMarker(markerList[i]);
-      }
-    }
+      };
+    };
   };
 
   this.createMarker = function(place) {
@@ -89,7 +89,9 @@ var viewModel = function() {
   };
 
   this.locMarkerClear = function() {
-    self.createMarker(null);
+    for (var i = 0; i < markerList.length; i++) {
+      markerList[i].setMap(null);
+    };
   };
 
 
