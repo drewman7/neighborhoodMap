@@ -4,7 +4,6 @@ var modelData = {
   map: {},
   infowindow: {},
   address: "",
-  //addressGeo: { lat: 36.26, lng: -95.147},
   addressGeo: { lat: 43.25, lng: -83.79},
   markerType: "",
   markerList: []
