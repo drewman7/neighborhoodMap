@@ -82,7 +82,7 @@ var viewModel = function() {
       position: place.geometry.location
     });
 
-    markerList[index] = marker;
+    modelData.markerList[index] = marker;
 
     google.maps.event.addListener(marker, 'click', function() {
       infowindow.setContent(place.name);
