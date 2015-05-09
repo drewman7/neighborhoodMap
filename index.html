@@ -16,7 +16,7 @@
           <h1  data-bind="text: pageTitle"></h1>
       </div>
       <div id="map-input">
-        <input id="address" type="textbox" value="United States">
+        <input id="address" type="textbox" value="Birch Run, MI">
         <button data-bind="click: $root.codeAddress">Click me</button>
         <!-- <input type="button" value="Encode" data-bind="click: $root.codeAddress"> -->
       </div>
@@ -25,6 +25,9 @@
       <div id="map-markers">
         <input id="markerType" type="textbox" value="">
         <button data-bind="click: $root.locMarker">Click to add a marker</button>
+      </div>
+      <div id="map-markersClear">
+        <button data-bind="click: $root.locMarkerClear">Clear All Markers</button>
       </div>
   </body>
 </html>

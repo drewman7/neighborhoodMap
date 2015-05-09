@@ -21,7 +21,7 @@ var viewModel = function() {
   this.mapInitialize = function() {
     modelData.geocoder = new google.maps.Geocoder();
     var mapOptions = {
-      center: { lat: 43.25, lng: -83.79},
+      center: { lat: 36.26, lng: -95.147},
       zoom: 3
     };
     map = new google.maps.Map(document.getElementById('map-canvas'),
@@ -88,6 +88,9 @@ var viewModel = function() {
     });
   };
 
+  this.locMarkerClear = function() {
+    setAllMap(null);
+  };
 
 
   this.codeMarker = function() {
