@@ -4,8 +4,9 @@ var modelData = {
   map: {},
   infowindow: {},
   address: "",
-  addressGeo: "",
-  markerType: ""
+  addressGeo: { lat: 36.26, lng: -95.147},
+  markerType: "",
+  markerList: []
 }
 
 //var geocoder;
@@ -20,7 +21,7 @@ var viewModel = function() {
   this.mapInitialize = function() {
     modelData.geocoder = new google.maps.Geocoder();
     var mapOptions = {
-      center: { lat: 36.26, lng: -95.147},
+      center: addressGeo,
       zoom: 3
     };
     map = new google.maps.Map(document.getElementById('map-canvas'),
@@ -37,7 +38,7 @@ var viewModel = function() {
         addressGeo = results[0].geometry.location;
         var mapOptions = {
           center: results[0].geometry.location,
-          zoom: 14
+          zoom: 15
         };
         map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);  
@@ -66,9 +67,10 @@ var viewModel = function() {
   };
 
   this.callback = function(results, status) {
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
-      for (var i = 0; i < results.length; i++) {
-        self.createMarker(results[i]);
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      markerList = results;
+      for (var i = 0; i < markerList.length; i++) {
+        self.createMarker(markerList[i]);
       }
     }
   };
@@ -87,10 +89,11 @@ var viewModel = function() {
   };
 
 
+
   this.codeMarker = function() {
     var markerAddress = document.getElementById("markerAddress").value;
     modelData.geocoder.geocode( { 'address': markerAddress}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
+      if (status === google.maps.GeocoderStatus.OK) {
         var marker = new google.maps.Marker({
             map: map,
             position: results[0].geometry.location,
@@ -106,7 +109,6 @@ var viewModel = function() {
 
 //ko.applyBindings(new ViewModel());
 $(function() {
-
     ko.applyBindings(new viewModel());
 });
 
