@@ -58,7 +58,7 @@ var viewModel = function() {
     var request = {
       location: addressGeo,
       radius: 1000,
-      query: 'restaurant'
+      query: markerType
     };
     infowindow = new google.maps.InfoWindow();
     var service = new google.maps.places.PlacesService(map);
