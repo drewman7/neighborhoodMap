@@ -5,7 +5,7 @@ var modelData = {
   infowindow: {},
   address: "",
   //addressGeo: { lat: 36.26, lng: -95.147},
-  addressGeo: { Lat: 43.25, Lng: -83.79},
+  addressGeo: { lat: 43.25, lng: -83.79},
   markerType: "",
   markerList: []
 }
