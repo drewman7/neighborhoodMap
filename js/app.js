@@ -89,7 +89,7 @@ var viewModel = function() {
   };
 
   this.locMarkerClear = function() {
-    setAllMap(null);
+    self.createMarker(null);
   };
 
 
