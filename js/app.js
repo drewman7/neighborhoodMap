@@ -77,6 +77,7 @@ var viewModel = function() {
         self.createMarker(results[i], i);
         self.markerListArray.push(results[i].name);
         console.log(self.markerListArray()[i]);
+        console.log(self.markerListArray.length);
       };
     };
   };
