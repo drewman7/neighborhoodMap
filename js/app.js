@@ -20,7 +20,7 @@ var viewModel = function() {
   var self = this;
 
   this.pageTitle = ko.observable(modelData.title);
-  var this.markerListArray = ko.observableArray();
+  var markerListArray = ko.observableArray();
   this.mapInitialize = function() {
     modelData.geocoder = new google.maps.Geocoder();
     var mapOptions = {
