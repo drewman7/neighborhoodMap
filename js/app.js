@@ -76,7 +76,7 @@ var viewModel = function() {
       for (var i = 0; i < results.length; i++) {
         self.createMarker(results[i], i);
         markerListArray.push(results[i].name);
-        console.log(results[i].name);
+        console.log(markerListArray()[i]);
       };
     };
   };
