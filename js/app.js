@@ -31,14 +31,15 @@ var viewModel = function() {
         mapOptions);
   };
   
-  google.maps.event.addDomListener(window, 'load', self.mapInitialize);
-
   this.codeAddress = function() {
     address = document.getElementById("address").value;
     modelData.geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
+
+  google.maps.event.addDomListener(window, 'load', self.mapInitialize);
         //map.setCenter(results[0].geometry.location);
         addressGeo = results[0].geometry.location;
+        console.log(addressGeo);
         var mapOptions = {
           center: results[0].geometry.location,
           zoom: 15
