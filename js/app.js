@@ -61,7 +61,7 @@ var viewModel = function() {
     markerType = document.getElementById("markerType").value;
     var request = {
       location: addressGeo,
-      radius: 1000,
+      radius: 300,
       query: markerType
     };
     infowindow = new google.maps.InfoWindow();
@@ -77,7 +77,7 @@ var viewModel = function() {
         self.createMarker(results[i], i);
         self.markerListArray.push(results[i].name);
         console.log(self.markerListArray()[i]);
-        console.log(self.markerListArray.length);
+        console.log(self.markerListArray().length);
       };
     };
   };
