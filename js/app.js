@@ -72,9 +72,11 @@ var viewModel = function() {
   this.callback = function(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       modelData.markerList.info = results;
-      self.markerListArray.push(results);
+      //self.markerListArray.push(results);
       for (var i = 0; i < results.length; i++) {
         self.createMarker(results[i], i);
+        self.markerListArray.push(results[i].name);
+        console.log(results[i].name);
       };
     };
   };
