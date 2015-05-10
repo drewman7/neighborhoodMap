@@ -20,7 +20,7 @@ var viewModel = function() {
   var self = this;
 
   this.pageTitle = ko.observable(modelData.title);
-  this.markerListArray = ko.observableArray(modelData.markerList.info);
+  var this.markerListArray = ko.observableArray();
   this.mapInitialize = function() {
     modelData.geocoder = new google.maps.Geocoder();
     var mapOptions = {
@@ -72,7 +72,7 @@ var viewModel = function() {
   this.callback = function(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       modelData.markerList.info = results;
-      markerListArray = results;
+      self.markerListArray.push(results);
       for (var i = 0; i < results.length; i++) {
         self.createMarker(results[i], i);
       };
