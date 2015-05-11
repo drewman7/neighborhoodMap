@@ -1,6 +1,6 @@
 var modelData = {
   title: "Neighborhood MAP!",
-  markerTitle: "Markers!",
+  markerListTitle: ko.observable("Markers!"),
   geocoder: {},
   map: {},
   infowindow: {},
@@ -22,7 +22,7 @@ var viewModel = function() {
 
   this.pageTitle = ko.observable(modelData.title);
   this.markerListArray = ko.observableArray();
-  this.markerListTitle = ko.observable("");
+  //this.markerListTitle = ko.observable("");
   this.mapInitialize = function() {
     modelData.geocoder = new google.maps.Geocoder();
     var mapOptions = {
