@@ -80,9 +80,9 @@ var viewModel = function() {
         self.createMarker(results[i], i);
         self.markerListArray.push(results[i].name);
         if (self.markerListArray().length > 0) {
-          self.markerListTitle(modelData.markerTitle);
+          self.markerListTitle('Markers');
         } else {
-          self.markerListTitle("");
+          self.markerListTitle('');
         };
         console.log(self.markerListArray()[i]);
         console.log(self.markerListArray().length);
