@@ -82,7 +82,9 @@ var viewModel = function() {
         self.createMarker(results[i], i);
         //self.markerListArray.push(results[i].name);
         self.markerListArray2.push(results[i]);
+        self.markerListArray2()[i].marker = modelData.markerList.marker[i];
         console.log(self.markerListArray2()[i].name);
+        console.log(self.markerListArray2()[i].marker);
         if (self.markerListArray2().length > 0) {
           modelData.markerListTitle('Marker List:');
         } else {
