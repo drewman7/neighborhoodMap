@@ -1,6 +1,6 @@
 var modelData = {
   title: "Neighborhood MAP!",
-  markerTitle: "Markers!"
+  markerTitle: "Markers!",
   geocoder: {},
   map: {},
   infowindow: {},
