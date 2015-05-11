@@ -24,6 +24,7 @@ var viewModel = function() {
   //this.markerListTitle = modelData.markerListTitle;
   //this.markerListArray = ko.observableArray();
   this.markerListArray2 = ko.observableArray();
+  this.filter = ko.observable();
   
   this.mapInitialize = function() {
     modelData.geocoder = new google.maps.Geocoder();
