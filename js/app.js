@@ -111,6 +111,19 @@ var viewModel = function() {
     });
   };
 
+  //filter the items using the filter text
+  this.filteredItems = ko.computed(function() {
+      var filter = this.filter().toLowerCase();
+      if (!filter) {
+          return self.markerListArray2().name;
+      } else {
+          return ko.utils.arrayFilter(self.markerListArray2().name, function(item) {
+              return ko.utils.stringStartsWith(item.name().toLowerCase(), filter);
+          });
+      }
+  }, this);
+
+
   //this.locMarkerClear = function() {
   //  for (var i = 0; i < modelData.markerList.marker.length; i++) {
   //    modelData.markerList.marker[i].setMap(null);

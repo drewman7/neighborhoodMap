@@ -30,13 +30,14 @@
         <span id="map-markersClear">
           <button data-bind="click: $root.locMarkerClear">Clear All Markers</button>
         </span>
+        <p>Filter: <input data-bind="value: filter, valueUpdate: 'afterkeydown'" /></p>
         <table>
             <thead>
                 <tr><th data-bind="text: modelData.markerListTitle"></th></tr>
             </thead>
-            <tbody data-bind="foreach: markerListArray2">
+            <tbody data-bind="foreach: filteredItems">
                 <tr>
-                    <td data-bind="text: name"></td>
+                    <td data-bind="text: $data"></td>
                 </tr>
             </tbody>
         </table>
