@@ -101,6 +101,7 @@ var viewModel = function() {
   this.locMarkerClear = function() {
     for (var i = 0; i < modelData.markerList.marker.length; i++) {
       modelData.markerList.marker[i].setMap(null);
+      self.markerListArray.removeAll();
     };
   };
 
