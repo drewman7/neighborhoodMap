@@ -23,6 +23,7 @@ var viewModel = function() {
   this.pageTitle = ko.observable(modelData.title);
   //this.markerListTitle = modelData.markerListTitle;
   this.markerListArray = ko.observableArray();
+  this.markerListArray2 = ko.observableArray();
   
   this.mapInitialize = function() {
     modelData.geocoder = new google.maps.Geocoder();
@@ -80,14 +81,15 @@ var viewModel = function() {
       for (var i = 0; i < results.length; i++) {
         self.createMarker(results[i], i);
         self.markerListArray.push(results[i].name);
+        self.markerListArray2.push(results[i]);
+        console.log(self.markerListArray2()[i].name);
         if (self.markerListArray().length > 0) {
-          console.log(self.markerListTitle);
           modelData.markerListTitle('Marker List:');
         } else {
           modelData.markerListTitle('');
         };
-        console.log(self.markerListArray().length + self.markerListArray()[i]);
-        console.log(self.markerListArray().length);
+        //console.log(self.markerListArray().length + self.markerListArray()[i]);
+        //console.log(self.markerListArray().length);
       };
     };
   };
