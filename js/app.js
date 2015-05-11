@@ -21,7 +21,7 @@ var viewModel = function() {
   var self = this;
 
   this.pageTitle = ko.observable(modelData.title);
-  this.markerListTitle = modelData.markerListTitle;
+  //this.markerListTitle = modelData.markerListTitle;
   this.markerListArray = ko.observableArray();
   
   this.mapInitialize = function() {
@@ -80,13 +80,13 @@ var viewModel = function() {
       for (var i = 0; i < results.length; i++) {
         self.createMarker(results[i], i);
         self.markerListArray.push(results[i].name);
-        if (self.markerListArray().length > 0) {
-          console.log(self.markerListTitle);
+        //if (self.markerListArray().length > 0) {
+          //console.log(self.markerListTitle);
           //self.markerListTitle('Markers');
-        } else {
+        //} else {
           //self.markerListTitle('');
-        };
-        console.log(self.markerListArray()[i]);
+        //};
+        console.log(self.markerListArray().length + self.markerListArray()[i]);
         console.log(self.markerListArray().length);
       };
     };
