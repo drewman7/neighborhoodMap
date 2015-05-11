@@ -21,7 +21,7 @@ var viewModel = function() {
   var self = this;
 
   this.pageTitle = ko.observable(modelData.title);
-  //this.markerListTitle = modelData.markerListTitle;
+  this.markerListTitle = modelData.markerListTitle;
   this.markerListArray = ko.observableArray();
   
   this.mapInitialize = function() {
