@@ -111,14 +111,20 @@ var viewModel = function() {
     });
   };
 
+  //this.locMarkerClear = function() {
+  //  for (var i = 0; i < modelData.markerList.marker.length; i++) {
+  //    modelData.markerList.marker[i].setMap(null);
+  //    self.markerListArray2.removeAll();
+  //    modelData.markerListTitle("No Markers Shown!");
+  //  };
+  //};
   this.locMarkerClear = function() {
-    for (var i = 0; i < modelData.markerList.marker.length; i++) {
-      modelData.markerList.marker[i].setMap(null);
-      self.markerListArray2.removeAll();
-      modelData.markerListTitle("No Markers Shown!");
+    for (var i = 0; i < self.markerListArray2().length; i++) {
+      self.markerListArray2()[i].marker.setMap(null);
     };
+    self.markerListArray2.removeAll();
+    modelData.markerListTitle("No Markers Shown!");
   };
-
 
   this.codeMarker = function() {
     var markerAddress = document.getElementById("markerAddress").value;
