@@ -21,8 +21,9 @@ var viewModel = function() {
   var self = this;
 
   this.pageTitle = ko.observable(modelData.title);
+  this.markerListTitle = modelData.markerListTitle;
   this.markerListArray = ko.observableArray();
-  //this.markerListTitle = ko.observable("");
+  
   this.mapInitialize = function() {
     modelData.geocoder = new google.maps.Geocoder();
     var mapOptions = {
@@ -80,9 +81,10 @@ var viewModel = function() {
         self.createMarker(results[i], i);
         self.markerListArray.push(results[i].name);
         if (self.markerListArray().length > 0) {
-          self.markerListTitle('Markers');
+          console.log(self.markerListTitle);
+          //self.markerListTitle('Markers');
         } else {
-          self.markerListTitle('');
+          //self.markerListTitle('');
         };
         console.log(self.markerListArray()[i]);
         console.log(self.markerListArray().length);
@@ -109,7 +111,7 @@ var viewModel = function() {
     for (var i = 0; i < modelData.markerList.marker.length; i++) {
       modelData.markerList.marker[i].setMap(null);
       self.markerListArray.removeAll();
-      self.markerListTitle("");
+      //self.markerListTitle("");
     };
   };
 
