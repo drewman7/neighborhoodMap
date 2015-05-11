@@ -114,14 +114,19 @@ var viewModel = function() {
 
   //filter the items using the filter text
   this.filteredItems = ko.computed(function() {
+      
+      return self.markerListArray2();
+
       //var filter = this.filter().toLowerCase();
-      if (!self.filter) {
-          return self.markerListArray2().name;
-      } else {
-          return ko.utils.arrayFilter(self.markerListArray2().name, function(item) {
-              return ko.utils.stringStartsWith(item.name().toLowerCase(), self.filter);
-          });
-      }
+      //console.log(self.filter);
+      //console.log(!self.filter);
+      //if (!self.filter) {
+      //    return self.markerListArray2().name;
+      //} else {
+      //    return ko.utils.arrayFilter(self.markerListArray2().name, function(item) {
+      //        return ko.utils.stringStartsWith(item.name().toLowerCase(), self.filter);
+      //    });
+      //}
   }, this);
 
 
