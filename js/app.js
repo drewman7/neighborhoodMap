@@ -1,6 +1,6 @@
 var modelData = {
   title: "Neighborhood MAP!",
-  markerListTitle: ko.observable("Markers!"),
+  markerListTitle: ko.observable(""),
   geocoder: {},
   map: {},
   infowindow: {},
@@ -80,12 +80,12 @@ var viewModel = function() {
       for (var i = 0; i < results.length; i++) {
         self.createMarker(results[i], i);
         self.markerListArray.push(results[i].name);
-        //if (self.markerListArray().length > 0) {
-          //console.log(self.markerListTitle);
-          //self.markerListTitle('Markers');
-        //} else {
-          //self.markerListTitle('');
-        //};
+        if (self.markerListArray().length > 0) {
+          console.log(self.markerListTitle);
+          modelData.markerListTitle('Markers');
+        } else {
+          modelData.markerListTitle('');
+        };
         console.log(self.markerListArray().length + self.markerListArray()[i]);
         console.log(self.markerListArray().length);
       };
