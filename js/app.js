@@ -24,7 +24,7 @@ var viewModel = function() {
   //this.markerListTitle = modelData.markerListTitle;
   //this.markerListArray = ko.observableArray();
   this.markerListArray2 = ko.observableArray();
-  this.filter = ko.observable();
+  //this.filter = ko.observable();
   
   this.mapInitialize = function() {
     modelData.geocoder = new google.maps.Geocoder();
@@ -114,7 +114,7 @@ var viewModel = function() {
 
   //filter the items using the filter text
   this.filteredItems = ko.computed(function() {
-      var filter = this.filter().toLowerCase();
+      var filter = this.filter.toLowerCase();
       if (!filter) {
           return self.markerListArray2().name;
       } else {
