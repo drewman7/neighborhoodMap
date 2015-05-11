@@ -1,5 +1,6 @@
 var modelData = {
   title: "Neighborhood MAP!",
+  markerTitle: "Markers!"
   geocoder: {},
   map: {},
   infowindow: {},
@@ -21,6 +22,7 @@ var viewModel = function() {
 
   this.pageTitle = ko.observable(modelData.title);
   this.markerListArray = ko.observableArray();
+  this.markerListTitle = ko.observable();
   this.mapInitialize = function() {
     modelData.geocoder = new google.maps.Geocoder();
     var mapOptions = {
@@ -77,6 +79,11 @@ var viewModel = function() {
       for (var i = 0; i < results.length; i++) {
         self.createMarker(results[i], i);
         self.markerListArray.push(results[i].name);
+        if (self.markerListArray().length > 0) {
+          self.markerListTitle = modelData.markerTitle;
+        } else {
+          self.markerListTitle = "";
+        };
         console.log(self.markerListArray()[i]);
         console.log(self.markerListArray().length);
       };
@@ -102,6 +109,7 @@ var viewModel = function() {
     for (var i = 0; i < modelData.markerList.marker.length; i++) {
       modelData.markerList.marker[i].setMap(null);
       self.markerListArray.removeAll();
+      self.markerListTitle = "";
     };
   };
 
