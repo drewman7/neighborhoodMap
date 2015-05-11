@@ -22,7 +22,7 @@ var viewModel = function() {
 
   this.pageTitle = ko.observable(modelData.title);
   //this.markerListTitle = modelData.markerListTitle;
-  this.markerListArray = ko.observableArray();
+  //this.markerListArray = ko.observableArray();
   this.markerListArray2 = ko.observableArray();
   
   this.mapInitialize = function() {
@@ -80,10 +80,10 @@ var viewModel = function() {
       //self.markerListArray.push(results);
       for (var i = 0; i < results.length; i++) {
         self.createMarker(results[i], i);
-        self.markerListArray.push(results[i].name);
+        //self.markerListArray.push(results[i].name);
         self.markerListArray2.push(results[i]);
         console.log(self.markerListArray2()[i].name);
-        if (self.markerListArray().length > 0) {
+        if (self.markerListArray2().length > 0) {
           modelData.markerListTitle('Marker List:');
         } else {
           modelData.markerListTitle('');
@@ -112,7 +112,7 @@ var viewModel = function() {
   this.locMarkerClear = function() {
     for (var i = 0; i < modelData.markerList.marker.length; i++) {
       modelData.markerList.marker[i].setMap(null);
-      self.markerListArray.removeAll();
+      self.markerListArray2.removeAll();
       modelData.markerListTitle("No Markers Shown!");
     };
   };
