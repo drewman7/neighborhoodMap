@@ -115,7 +115,13 @@ var viewModel = function() {
   //filter the items using the filter text
   this.filteredItems = ko.computed(function() {
       console.log(self.filter());
-      return self.markerListArray2();
+      if (!self.filter()) {
+        return self.markerListArray2();
+      } else {
+        var test = ["bob", "bill", "Susan"]
+        return test
+        //return self.markerListArray2();
+      };
 
       //var filter = this.filter().toLowerCase();
       //console.log(self.filter);
