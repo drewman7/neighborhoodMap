@@ -120,6 +120,7 @@ var viewModel = function() {
       console.log(self.filter());
       if (!self.filter()) {
         for (var i = 0; i < self.markerListArray2().length; i++) {
+          console.log(self.markerListArray2()[i].marker);
           self.markerListArray2()[i].marker.setMap(modelData.map);
           //self.createMarker(self.markerListArray2()[i], i);
           //self.markerListArray2()[i].marker = modelData.markerList.marker[i];
@@ -131,6 +132,7 @@ var viewModel = function() {
         for (var i = 0; i < self.markerListArray2().length; i++) {
           if (self.markerListArray2()[i].name.toLowerCase().search(self.filter().toLowerCase()) !== -1) {
             temp.push(self.markerListArray2()[i]);
+            console.log(self.markerListArray2()[i].marker);
             self.markerListArray2()[i].marker.setMap(modelData.map);
             //self.createMarker(self.markerListArray2()[i], i);
             //self.markerListArray2()[i].marker = modelData.markerList.marker[i];
