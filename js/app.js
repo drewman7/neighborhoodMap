@@ -116,6 +116,9 @@ var viewModel = function() {
   this.filteredItems = ko.computed(function() {
       console.log(self.filter());
       if (!self.filter()) {
+        for (var i = 0; i < self.markerListArray2().length; i++) {
+          self.markerListArray2()[i].marker.setMap(map);
+        };
         return self.markerListArray2();
       } else {
         var temp = [];
@@ -123,6 +126,9 @@ var viewModel = function() {
         for (var i = 0; i < self.markerListArray2().length; i++) {
           if (self.markerListArray2()[i].name.toLowerCase().search(self.filter().toLowerCase()) !== -1) {
             temp.push(self.markerListArray2()[i]);
+            self.markerListArray2()[i].marker.setMap(map);
+          } else {
+            self.markerListArray2()[i].marker.setMap(null);
           };
         };
 
