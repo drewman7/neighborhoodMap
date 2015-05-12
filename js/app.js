@@ -118,9 +118,8 @@ var viewModel = function() {
       if (!self.filter()) {
         return self.markerListArray2();
       } else {
-        var test = ["bob", "bill", "Susan"]
-        return test
-        //return self.markerListArray2();
+        var temp = self.markerListArray2();
+        return temp;
       };
 
       //var filter = this.filter().toLowerCase();
