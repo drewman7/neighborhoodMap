@@ -83,7 +83,7 @@ var viewModel = function() {
         self.createMarker(results[i], i);
         //self.markerListArray.push(results[i].name);
         self.markerListArray2.push(results[i]);
-        self.markerListArray2()[i].marker = modelData.markerList.marker[i];
+        //self.markerListArray2()[i].marker = modelData.markerList.marker[i];
         console.log(self.markerListArray2()[i].name);
         console.log(self.markerListArray2()[i].marker);
         if (self.markerListArray2().length > 0) {
@@ -104,7 +104,8 @@ var viewModel = function() {
       position: place.geometry.location
     });
 
-    modelData.markerList.marker[index] = marker;
+    //modelData.markerList.marker[index] = marker;
+    self.markerListArray2()[index].marker = marker;
 
     google.maps.event.addListener(marker, 'click', function() {
       infowindow.setContent(place.name);
@@ -118,6 +119,7 @@ var viewModel = function() {
       if (!self.filter()) {
         for (var i = 0; i < self.markerListArray2().length; i++) {
           //self.markerListArray2()[i].marker.setMap(map);
+          self.createMarker(self.markerListArray2()[i], i);
         };
         return self.markerListArray2();
       } else {
@@ -127,6 +129,7 @@ var viewModel = function() {
           if (self.markerListArray2()[i].name.toLowerCase().search(self.filter().toLowerCase()) !== -1) {
             temp.push(self.markerListArray2()[i]);
             //self.markerListArray2()[i].marker.setMap(map);
+            self.createMarker(self.markerListArray2()[i], i);
           } else {
             self.markerListArray2()[i].marker.setMap(null);
           };
