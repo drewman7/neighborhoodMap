@@ -123,7 +123,9 @@ var viewModel = function() {
             //console.log(self.markerListArray2()[i].marker);
             console.log(i);
             console.log(self.markerListArray2().length);
-            self.markerListArray2()[i].marker.setMap(map);
+            if (self.markerListArray2()[i].marker === undefined) {
+              self.markerListArray2()[i].marker.setMap(map);
+            };
             //self.createMarker(self.markerListArray2()[i], i);
             //self.markerListArray2()[i].marker = modelData.markerList.marker[i];
           };
