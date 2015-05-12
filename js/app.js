@@ -121,7 +121,7 @@ var viewModel = function() {
         var temp = [];
         
         for (var i = 0; i < self.markerListArray2().length; i++) {
-          if (self.markerListArray2()[i].name.search(self.filter()) !== -1) {
+          if (self.markerListArray2()[i].name.toLowerCase().search(self.filter().toLowerCase()) !== -1) {
             temp.push(self.markerListArray2()[i]);
           };
         };
