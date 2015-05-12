@@ -118,7 +118,14 @@ var viewModel = function() {
       if (!self.filter()) {
         return self.markerListArray2();
       } else {
-        var temp = self.markerListArray2();
+        var temp = [];
+        
+        for (var i = 0; i < self.markerListArray2().length; i++) {
+          if (self.markerListArray2()[i].name.search(self.filter()) !== -1) {
+            temp.push(self.markerListArray2()[i]);
+          };
+        };
+
         return temp;
       };
 
