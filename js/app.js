@@ -146,7 +146,7 @@ var viewModel = function() {
   this.infoWindowAppear = function(listIndex, data, marker) {
    
     console.log(data);
-    console.log(listIndex());
+    //console.log(listIndex());
     infowindow.setContent(data.name);
     if (marker === null) {
       infowindow.open(map, data.marker);
