@@ -142,6 +142,12 @@ var viewModel = function() {
       };
   }, this);
 
+  this.infoWindowAppear = function(data, index) {
+    //infowindow.open(map, )
+    console.log(data);
+    console.log(index);
+  };
+
 
   //this.locMarkerClear = function() {
   //  for (var i = 0; i < modelData.markerList.marker.length; i++) {
