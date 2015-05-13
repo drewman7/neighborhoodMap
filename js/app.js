@@ -144,8 +144,8 @@ var viewModel = function() {
 
   this.infoWindowAppear = function(data, index) {
     //infowindow.open(map, )
-    console.log(data);
-    console.log(index);
+    console.log(data());
+    console.log(index());
   };
 
 
