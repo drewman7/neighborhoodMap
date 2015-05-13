@@ -146,7 +146,7 @@ var viewModel = function() {
    
     console.log(marker);
     console.log(listIndex());
-     infowindow.open(map, marker);
+     infowindow.open(map, marker.marker);
   };
 
 
