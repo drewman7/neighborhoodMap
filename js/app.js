@@ -120,14 +120,9 @@ var viewModel = function() {
       if (self.markerListArray2().length > 0) {
         if (!self.filter()) {
           for (var i = 0; i < self.markerListArray2().length; i++) {
-            //console.log(self.markerListArray2()[i].marker);
-            console.log(i);
-            console.log(self.markerListArray2().length);
             if (self.markerListArray2()[i].marker !== undefined) {
               self.markerListArray2()[i].marker.setMap(map);
             };
-            //self.createMarker(self.markerListArray2()[i], i);
-            //self.markerListArray2()[i].marker = modelData.markerList.marker[i];
           };
           return self.markerListArray2();
         } else {
@@ -136,10 +131,7 @@ var viewModel = function() {
           for (var i = 0; i < self.markerListArray2().length; i++) {
             if (self.markerListArray2()[i].name.toLowerCase().search(self.filter().toLowerCase()) !== -1) {
               temp.push(self.markerListArray2()[i]);
-              //console.log(temp[i].marker);
               self.markerListArray2()[i].marker.setMap(map);
-              //self.createMarker(self.markerListArray2()[i], i);
-              //self.markerListArray2()[i].marker = modelData.markerList.marker[i];
             } else {
               self.markerListArray2()[i].marker.setMap(null);
             };
@@ -148,16 +140,6 @@ var viewModel = function() {
           return temp;
         };
       };
-      //var filter = this.filter().toLowerCase();
-      //console.log(self.filter);
-      //console.log(!self.filter);
-      //if (!self.filter) {
-      //    return self.markerListArray2().name;
-      //} else {
-      //    return ko.utils.arrayFilter(self.markerListArray2().name, function(item) {
-      //        return ko.utils.stringStartsWith(item.name().toLowerCase(), self.filter);
-      //    });
-      //}
   }, this);
 
 
