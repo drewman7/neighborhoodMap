@@ -110,8 +110,9 @@ var viewModel = function() {
     //self.markerListArray2()[index].marker = marker;
 
     google.maps.event.addListener(marker, 'click', function() {
-      infowindow.setContent(place.name);
-      infowindow.open(map, this);
+      self.infoWindowAppear(index, place, marker);
+      //infowindow.setContent(place.name);
+      //infowindow.open(map, this);
     });
   };
 
@@ -142,12 +143,16 @@ var viewModel = function() {
       };
   }, this);
 
-  this.infoWindowAppear = function(listIndex, data) {
+  this.infoWindowAppear = function(listIndex, data, marker) {
    
     console.log(data);
     console.log(listIndex());
     infowindow.setContent(data.name);
-    infowindow.open(map, data.marker);
+    if (marker === null) {
+      infowindow.open(map, data.marker);
+    } else {
+      infowindow.open(map, marker);
+    };
   };
 
 
