@@ -142,10 +142,10 @@ var viewModel = function() {
       };
   }, this);
 
-  this.infoWindowAppear = function(data) {
+  this.infoWindowAppear = function(index, data) {
     //infowindow.open(map, )
-    console.log(data());
-    //console.log(index());
+    console.log(data);
+    console.log(index());
   };
 
 
