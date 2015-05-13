@@ -142,11 +142,12 @@ var viewModel = function() {
       };
   }, this);
 
-  this.infoWindowAppear = function(listIndex, marker) {
+  this.infoWindowAppear = function(listIndex, data) {
    
-    console.log(marker);
+    console.log(data);
     console.log(listIndex());
-     infowindow.open(map, marker.marker);
+    infowindow.setContent(data.name);
+    infowindow.open(map, data.marker);
   };
 
 
