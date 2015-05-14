@@ -190,14 +190,15 @@ var viewModel = function() {
 
       $wikiHeaderElem.text('Wikipedia Articles About ' + searchData + ':');
 
-      $.each( data[1], data[2], function( key, val1, val2 ) {
-        console.log(val1);
-        webLinkWiki = "<a href='http://en.wikipedia.org/wiki/" + val1 + "'>" + val1 + "</a>";
+      $.each( data, function( key, val ) {
+        console.log(val);
+        console.log(data);
+        webLinkWiki = "<a href='http://en.wikipedia.org/wiki/" + val + "'>" + val + "</a>";
         //console.log(webLinkWiki);
         if (val2 === null) {
           firstParagraph = "<p></p>";
         } else {
-          firstParagraph = "<p>" + val2 + "</p>";
+          firstParagraph = "<p>" + val + "</p>";
         };
         wikiItems.push( "<li>" + webLinkWiki + firstParagraph + "</li>" );
       });
