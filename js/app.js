@@ -64,7 +64,7 @@ var viewModel = function() {
         alert("Geocode was not successful for the following reason: " + status);
       };
     });
-    self.articles();
+    //self.articles();
   };
 
   this.locMarker = function() {
