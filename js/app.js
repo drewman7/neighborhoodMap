@@ -40,6 +40,7 @@ var viewModel = function() {
 
   this.codeAddress = function() {
     address = document.getElementById("address").value;
+    modelData.address = address;
     modelData.geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         //map.setCenter(results[0].geometry.location);
@@ -166,19 +167,41 @@ var viewModel = function() {
     modelData.markerListTitle("No Markers Shown!");
   };
 
-  this.codeMarker = function() {
-    var markerAddress = document.getElementById("markerAddress").value;
-    modelData.geocoder.geocode( { 'address': markerAddress}, function(results, status) {
-      if (status === google.maps.GeocoderStatus.OK) {
-        var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location,
-            title: markerAddress
-        });
-      } else {
-        alert("Geocode was not successful for the following reason: " + status);
-      };
+  this.articles = function() {
+    //NYT API
+    var nytArticles = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + modelData.address + "&sort=newest&api-key=d07b5097c616edd54dcb346b315766fd:14:71646048";
+    $.getJSON( nytArticles, function( data ) {
+
+      var items = [];
+      var webLinkTitle = "";
+      var firstParagraph = "";
+      var $nytHeaderElem = $('#nytimes-header');
+      var $nytElem = $('#nytimes-articles');
+
+      $nytHeaderElem.text('New York Times Articles About ' + modelData.address + ':');
+
+      $.each( data.response.docs, function( key, val ) {
+        webLinkTitle = "<a href='" + val.web_url + "'>" + val.headline.main + "</a>";
+        if (val.snippet === null) {
+          firstParagraph = "<p></p>";
+        } else {
+          firstParagraph = "<p>" + val.snippet + "</p>";
+        };
+        items.push( "<li class='article'>" + webLinkTitle + firstParagraph + "</li>" );
+        //items.push( "<ul id='" + key + "'>" + val.headline.main + "</ul>" );
+      });
+      //console.log(data.response);
+      $nytElem.append();
+      $nytElem.append(items);
+      //$( "<ul/>", {
+      //  "class": "my-new-list",
+      //  html: items.join( "" )
+      //}).appendTo( "body" );
+    })
+      .error(function() {
+        $nytHeaderElem.text('Error Loading New York Times Articles');
     });
+
   };
 };
 
