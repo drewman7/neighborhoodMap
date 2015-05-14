@@ -150,6 +150,7 @@ var viewModel = function() {
 
     infowindow.setContent(data.name);
     infowindow.open(map, data.marker);
+    self.articles(data.name);
   };
 
 
@@ -168,9 +169,10 @@ var viewModel = function() {
     modelData.markerListTitle("No Markers Shown!");
   };
 
-  this.articles = function() {
+  this.articles = function(data) {
     //NYT API
-    var nytArticles = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q='+ modelData.address + '&fq=glocations:("' + modelData.address + '")&sort=newest&api-key=d07b5097c616edd54dcb346b315766fd:14:71646048';
+    //var nytArticles = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q='+ modelData.address + '&fq=glocations:("' + modelData.address + '")&sort=newest&api-key=d07b5097c616edd54dcb346b315766fd:14:71646048';
+    var nytArticles = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q='+ data + '&sort=newest&api-key=d07b5097c616edd54dcb346b315766fd:14:71646048';
     console.log(nytArticles);
     $.getJSON( nytArticles, function( data ) {
 
