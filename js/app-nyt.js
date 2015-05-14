@@ -170,35 +170,40 @@ var viewModel = function() {
   };
 
   this.articles = function(data) {
-    //Wikipedia API
-    var wikiArticles = "http://en.wikipedfdffdfdfia.org/w/api.php?format=json&action=opensearch&search=" + data + "&callback=wikiCallback";
-    var $wikiElem = $('#wikipedia-links');
-    var $wikiHeaderElem = $('#wikipedia-header');
-    console.log(wikiArticles);
-    $.ajax({
-      url: wikiArticles, 
-      dataType: "jsonp",
-      success: function( data ) {
-        console.log(data[1]);
-      var wikiItems = [];
-      var webLinkWiki = "";
-      var wikiPageId = [];
+    //NYT API
+    //var nytArticles = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q='+ modelData.address + '&fq=glocations:("' + modelData.address + '")&sort=newest&api-key=d07b5097c616edd54dcb346b315766fd:14:71646048';
+    var nytArticles = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q="'+ data + '"&api-key=d07b5097c616edd54dcb346b315766fd:14:71646048';
+    console.log(nytArticles);
+    $.getJSON( nytArticles, function( data ) {
 
-      $wikiHeaderElem.text('Wikipedia Articles About ' + locCity + ':');
+      var items = [];
+      var webLinkTitle = "";
+      var firstParagraph = "";
+      var $nytHeaderElem = $('#nytimes-header');
+      var $nytElem = $('#nytimes-articles');
 
-      $.each( data[1], function( key, val ) {
-        console.log(val);
-        webLinkWiki = "<a href='http://en.wikipedia.org/wiki/" + val + "'>" + val + "</a>";
-        //console.log(webLinkWiki);
-        wikiItems.push( "<li>" + webLinkWiki + "</li>" );
+      $nytHeaderElem.text('New York Times Articles About ' + modelData.address + ':');
+
+      $.each( data.response.docs, function( key, val ) {
+        webLinkTitle = "<a href='" + val.web_url + "'>" + val.headline.main + "</a>";
+        if (val.snippet === null) {
+          firstParagraph = "<p></p>";
+        } else {
+          firstParagraph = "<p>" + val.snippet + "</p>";
+        };
+        items.push( "<li class='article'>" + webLinkTitle + firstParagraph + "</li>" );
+        //items.push( "<ul id='" + key + "'>" + val.headline.main + "</ul>" );
       });
-
-      $wikiElem.append();
-      $wikiElem.append(wikiItems);
-    }
+      //console.log(data.response);
+      $nytElem.append();
+      $nytElem.append(items);
+      //$( "<ul/>", {
+      //  "class": "my-new-list",
+      //  html: items.join( "" )
+      //}).appendTo( "body" );
     })
       .error(function() {
-        $wikiHeaderElem.text('Error Loading Wikipedia Articles');
+        $nytHeaderElem.text('Error Loading New York Times Articles');
     });
 
   };
