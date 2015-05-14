@@ -169,9 +169,9 @@ var viewModel = function() {
     modelData.markerListTitle("No Markers Shown!");
   };
 
-  this.articles = function(data) {
+  this.articles = function(searchData) {
     //Wikipedia API
-    var wikiArticles = "http://en.wikipedfdffdfdfia.org/w/api.php?format=json&action=opensearch&search=" + data + "&callback=wikiCallback";
+    var wikiArticles = "http://en.wikipedfdffdfdfia.org/w/api.php?format=json&action=opensearch&search=" + searchData + "&callback=wikiCallback";
     var $wikiElem = $('#wikipedia-links');
     var $wikiHeaderElem = $('#wikipedia-header');
     console.log(wikiArticles);
@@ -184,7 +184,7 @@ var viewModel = function() {
       var webLinkWiki = "";
       var wikiPageId = [];
 
-      $wikiHeaderElem.text('Wikipedia Articles About ' + locCity + ':');
+      $wikiHeaderElem.text('Wikipedia Articles About ' + searchData + ':');
 
       $.each( data[1], function( key, val ) {
         console.log(val);
