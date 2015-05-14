@@ -179,6 +179,7 @@ var viewModel = function() {
       url: wikiArticles, 
       dataType: "jsonp",
       success: function( data ) {
+        console.log(data);
         console.log(data[1]);
       var wikiItems = [];
       var webLinkWiki = "";
