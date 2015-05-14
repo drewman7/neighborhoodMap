@@ -190,7 +190,7 @@ var viewModel = function() {
 
       $wikiHeaderElem.text('Wikipedia Articles About ' + searchData + ':');
 
-      $.each( function() {
+      $.each( data, function( key, val ) {
         console.log(data);
         webLinkWiki = "<a href='http://en.wikipedia.org/wiki/" + data[1] + "'>" + data[1] + "</a>";
         //console.log(webLinkWiki);
