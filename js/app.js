@@ -171,7 +171,7 @@ var viewModel = function() {
 
   this.articles = function(searchData) {
     //Wikipedia API
-    var wikiArticles = "http://en.wikipedfdffdfdfia.org/w/api.php?format=json&action=opensearch&search=" + searchData + "&callback=wikiCallback";
+    var wikiArticles = "http://en.wikipedia.org/w/api.php?format=json&action=opensearch&search=" + searchData + "&callback=wikiCallback";
     var $wikiElem = $('#wikipedia-links');
     var $wikiHeaderElem = $('#wikipedia-header');
     console.log(wikiArticles);
