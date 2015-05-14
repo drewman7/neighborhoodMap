@@ -192,6 +192,7 @@ var viewModel = function() {
 
       $.each( data, function( key, val ) {
         console.log(data);
+        console.log(key);
         webLinkWiki = "<a href='http://en.wikipedia.org/wiki/" + data[1] + "'>" + data[1] + "</a>";
         //console.log(webLinkWiki);
         if (data[2] === null) {
