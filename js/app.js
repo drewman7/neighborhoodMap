@@ -183,17 +183,25 @@ var viewModel = function() {
         console.log(data[1]);
         console.log(data[2]);
       var wikiItems = [];
+      var paritems = [];
       var webLinkWiki = "";
       var wikiPageId = [];
+      var firstParagraph = "";
 
       $wikiHeaderElem.text('Wikipedia Articles About ' + searchData + ':');
 
-      $.each( data[1], function( key, val ) {
-        console.log(val);
-        webLinkWiki = "<a href='http://en.wikipedia.org/wiki/" + val + "'>" + val + "</a>";
+      $.each( data, function( key, val ) {
+        console.log(val[1]);
+        webLinkWiki = "<a href='http://en.wikipedia.org/wiki/" + val[1] + "'>" + val[1] + "</a>";
         //console.log(webLinkWiki);
-        wikiItems.push( "<li>" + webLinkWiki + "</li>" );
+        if (val[2] === null) {
+          firstParagraph = "<p></p>";
+        } else {
+          firstParagraph = "<p>" + val[2] + "</p>";
+        };
+        wikiItems.push( "<li>" + webLinkWiki + firstParagraph + "</li>" );
       });
+
 
       $wikiElem.append();
       $wikiElem.append(wikiItems);
