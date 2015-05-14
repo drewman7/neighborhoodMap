@@ -181,6 +181,7 @@ var viewModel = function() {
       success: function( data ) {
         console.log(data);
         console.log(data[1]);
+        console.log(data[2]);
       var wikiItems = [];
       var webLinkWiki = "";
       var wikiPageId = [];
