@@ -24,7 +24,7 @@ var viewModel = function() {
   this.pageTitle = ko.observable(modelData.title);
   this.markerListArray2 = ko.observableArray();
   this.filter = ko.observable();
-  this.wikiHeader = ko.observableArray('<h3>Relavent Wikipedia Articles:</h3>');
+  this.wikiHeader = ko.observable("<h3>Relavent Wikipedia Articles:</h3>");
   
   this.mapInitialize = function() {
     modelData.geocoder = new google.maps.Geocoder();
