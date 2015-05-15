@@ -218,7 +218,7 @@ var viewModel = function() {
         $wikiElem.append();
         $wikiElem.append(wikiItems);
       }
-    });
+    })
       .error(function() {
         $wikiHeaderElem.text('Error Loading Wikipedia Articles');
     });
