@@ -211,7 +211,7 @@ var viewModel = function() {
         $.each( data[2], function( key, val ) {
           console.log(val);
           console.log(key);
-          if (val === null) {
+          if (val === "") {
             wikiArray.paragraph.push("<p>No description available...</p>");
           } else {
             wikiArray.paragraph.push("<p>" + val + "</p>");
