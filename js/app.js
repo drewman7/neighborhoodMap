@@ -14,8 +14,6 @@ var modelData = {
     }
 };
 
-//var geocoder;
-//var map;
 
 var viewModel = function() {
 
@@ -44,7 +42,6 @@ var viewModel = function() {
     modelData.address = address;
     modelData.geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-        //map.setCenter(results[0].geometry.location);
         addressGeo = results[0].geometry.location;
         console.log(addressGeo);
         var mapOptions = {
@@ -56,11 +53,6 @@ var viewModel = function() {
 
         modelData.map = map;
 
-        //var marker = new google.maps.Marker({
-        //    map: map,
-        //    position: results[0].geometry.location,
-        //    title: address
-        //});
       } else {
         alert("Geocode was not successful for the following reason: " + status);
       };
@@ -84,10 +76,8 @@ var viewModel = function() {
   this.callback = function(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       modelData.markerList.info = results;
-      //self.markerListArray.push(results);
       for (var i = 0; i < results.length; i++) {
         self.createMarker(results[i], i);
-        //self.markerListArray.push(results[i].name);
         self.markerListArray2.push(results[i]);
         self.markerListArray2()[i].marker = modelData.markerList.marker[i];
         console.log(self.markerListArray2()[i].name);
@@ -97,8 +87,6 @@ var viewModel = function() {
         } else {
           modelData.markerListTitle('');
         };
-        //console.log(self.markerListArray().length + self.markerListArray()[i]);
-        //console.log(self.markerListArray().length);
       };
     };
   };
@@ -111,10 +99,8 @@ var viewModel = function() {
     });
 
     modelData.markerList.marker[index] = marker;
-    //self.markerListArray2()[index].marker = marker;
 
     google.maps.event.addListener(marker, 'click', function() {
-      //self.infoWindowAppear(index, place, marker);
       infowindow.setContent(place.name);
       infowindow.open(map, this);
     });
@@ -154,21 +140,12 @@ var viewModel = function() {
   }, this);
 
   this.infoWindowAppear = function(listIndex, data) {
-   
-
     infowindow.setContent(data.name);
     infowindow.open(map, data.marker);
     self.articles(data.name);
   };
 
 
-  //this.locMarkerClear = function() {
-  //  for (var i = 0; i < modelData.markerList.marker.length; i++) {
-  //    modelData.markerList.marker[i].setMap(null);
-  //    self.markerListArray2.removeAll();
-  //    modelData.markerListTitle("No Markers Shown!");
-  //  };
-  //};
   this.locMarkerClear = function() {
     for (var i = 0; i < self.markerListArray2().length; i++) {
       self.markerListArray2()[i].marker.setMap(null);
@@ -180,48 +157,30 @@ var viewModel = function() {
   this.articles = function(searchData) {
     //Wikipedia API
     var wikiArticles = "http://en.wikipedia.org/w/api.php?format=json&action=opensearch&search=" + searchData + "&callback=wikiCallback";
-    //var $wikiElem = $('#wikipedia-links');
-    //var $wikiHeaderElem = $('#wikipedia-header');
-    console.log(wikiArticles);
     $.ajax({
       url: wikiArticles, 
       dataType: "jsonp",
       success: function( data ) {
-        console.log(data);
-        console.log(data[1]);
-        console.log(data[2]);
         var wikiItems = [];
-        var paritems = [];
         var webLinkWiki = "";
-        var wikiPageId = [];
         var firstParagraph = "";
         var wikiArray = {
           link: [],
           paragraph: []
         };
 
-        console.log(data[1].length);
         if (data[1].length !== 0) {
           self.wikiHeader('<h3>Wikipedia Articles About ' + searchData + ':</h3>');
-          //$wikiHeaderElem.text('Wikipedia Articles About ' + searchData + ':');
         } else{ 
           self.wikiHeader('<h3>Sorry, there are no Wikipedia Articles About ' + searchData + '...</h3>');
-          //$wikiHeaderElem.text('Sorry, there are no Wikipedia Articles About ' + searchData + '...');
         };
-        //$wikiElem.replaceWith('<ul id="wikipedia-links"></ul>');
-        //$('<ul id="wikipedia-links"></ul>').replaceAll($wikiElem);
-        //$wikiElem = $('#wikipedia-links');
         self.wikiLinksHtml('<ul id="wikipedia-links"></ul>');
 
         $.each( data[1], function( key, val ) {
-          console.log(val);
-          console.log(key);
           wikiArray.link.push( "<a href='http://en.wikipedia.org/wiki/" + val + "'>" + val + "</a>" );
         });
 
         $.each( data[2], function( key, val ) {
-          console.log(val);
-          console.log(key);
           if (val === "") {
             wikiArray.paragraph.push("<p>No description available...</p>");
           } else {
@@ -234,15 +193,10 @@ var viewModel = function() {
         };
         
         self.wikiLinksHtml('<ul id="wikipedia-links">' + wikiItems + '</ul>');
-        //$wikiElem.append();
-        //$wikiElem.append(wikiItems);
       }
     })
       .error(function() {
         self.wikiHeader('<h3>Wikipedia Articles About:</h3>');
-        //$wikiHeaderElem.text('***Error Loading Wikipedia Articles***');
-        //$('<ul id="wikipedia-links"></ul>').replaceAll($wikiElem);
-        //$wikiElem = $('#wikipedia-links');
         self.wikiLinksHtml('<ul id="wikipedia-links"></ul>');
     });
 
@@ -253,6 +207,5 @@ var viewModel = function() {
 
 $(function() {
     ko.applyBindings(new viewModel());
-
 });
 
