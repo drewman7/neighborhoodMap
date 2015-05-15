@@ -25,6 +25,7 @@ var viewModel = function() {
   this.markerListArray2 = ko.observableArray();
   this.filter = ko.observable();
   this.wikiHeader = ko.observable("<h3>Relavent Wikipedia Articles:</h3>");
+  this.wikiLinksHtml = ko.observable();
   
   this.mapInitialize = function() {
     modelData.geocoder = new google.maps.Geocoder();
@@ -179,7 +180,7 @@ var viewModel = function() {
   this.articles = function(searchData) {
     //Wikipedia API
     var wikiArticles = "http://en.wikipedia.org/w/api.php?format=json&action=opensearch&search=" + searchData + "&callback=wikiCallback";
-    var $wikiElem = $('#wikipedia-links');
+    //var $wikiElem = $('#wikipedia-links');
     //var $wikiHeaderElem = $('#wikipedia-header');
     console.log(wikiArticles);
     $.ajax({
@@ -208,8 +209,9 @@ var viewModel = function() {
           //$wikiHeaderElem.text('Sorry, there are no Wikipedia Articles About ' + searchData + '...');
         };
         //$wikiElem.replaceWith('<ul id="wikipedia-links"></ul>');
-        $('<ul id="wikipedia-links"></ul>').replaceAll($wikiElem);
-        $wikiElem = $('#wikipedia-links');
+        //$('<ul id="wikipedia-links"></ul>').replaceAll($wikiElem);
+        //$wikiElem = $('#wikipedia-links');
+        self.wikiLinksHtml('<ul id="wikipedia-links"></ul>');
 
         $.each( data[1], function( key, val ) {
           console.log(val);
@@ -231,15 +233,17 @@ var viewModel = function() {
           wikiItems.push( "<li>" + wikiArray.link[i] + wikiArray.paragraph[i] + "</li>" );
         };
         
-        $wikiElem.append();
-        $wikiElem.append(wikiItems);
+        self.wikiLinksHtml('<ul id="wikipedia-links"><br>' + wikiItems + '</ul>');
+        //$wikiElem.append();
+        //$wikiElem.append(wikiItems);
       }
     })
       .error(function() {
         self.wikiHeader('<h3>Wikipedia Articles About:</h3>');
         //$wikiHeaderElem.text('***Error Loading Wikipedia Articles***');
-        $('<ul id="wikipedia-links"></ul>').replaceAll($wikiElem);
-        $wikiElem = $('#wikipedia-links');
+        //$('<ul id="wikipedia-links"></ul>').replaceAll($wikiElem);
+        //$wikiElem = $('#wikipedia-links');
+        self.wikiLinksHtml('<ul id="wikipedia-links"></ul>');
     });
 
   };
