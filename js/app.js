@@ -193,7 +193,7 @@ var viewModel = function() {
         };
 
         console.log(data[1].length);
-        if (data[1].length === 0) {
+        if (data[1].length !== 0) {
           $wikiHeaderElem.text('Wikipedia Articles About ' + searchData + ':');
         } else{ 
           $wikiHeaderElem.text('Sorry, there are no Wikipedia Articles About ' + searchData + '...');
