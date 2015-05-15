@@ -214,7 +214,11 @@ var viewModel = function() {
         console.log(val);
         console.log(key);
         //console.log(webLinkWiki);
-        wikiArray.paragraph.push("<p>" + data[2] + "</p>");
+        if (val === null) {
+          wikiArray.paragraph.push("<p></p>");
+        } else {
+          wikiArray.paragraph.push("<p>" + val + "</p>");
+        };
         //if (data[2] === null) {
         //  firstParagraph = "<p></p>";
         //} else {
