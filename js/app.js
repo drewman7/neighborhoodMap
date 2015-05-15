@@ -192,7 +192,11 @@ var viewModel = function() {
           paragraph: []
         };
 
-        $wikiHeaderElem.text('Wikipedia Articles About ' + searchData + ':');
+        if (data[1] !== null) {
+          $wikiHeaderElem.text('Wikipedia Articles About ' + searchData + ':');
+        } else{ 
+          $wikiHeaderElem.text('Sorry, there are no Wikipedia Articles About ' + searchData + '...');
+        };
         //$wikiElem.replaceWith('<ul id="wikipedia-links"></ul>');
         $('<ul id="wikipedia-links"></ul>').replaceAll($wikiElem);
         $wikiElem = $('#wikipedia-links');
@@ -207,7 +211,7 @@ var viewModel = function() {
           console.log(val);
           console.log(key);
           if (val === null) {
-            wikiArray.paragraph.push("<p></p>");
+            wikiArray.paragraph.push("<p>No description available...</p>");
           } else {
             wikiArray.paragraph.push("<p>" + val + "</p>");
           };
