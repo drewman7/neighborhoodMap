@@ -25,7 +25,7 @@ var viewModel = function() {
   this.markerListArray2 = ko.observableArray();
   this.filter = ko.observable();
   this.wikiHeader = ko.observable("<h3>Relavent Wikipedia Articles:</h3>");
-  this.wikiLinksHtml = ko.observable();
+  this.wikiLinksHtml = ko.observable('Enter a neighborhood above to find relevant Wikipedia articles!');
   
   this.mapInitialize = function() {
     modelData.geocoder = new google.maps.Geocoder();
@@ -233,7 +233,7 @@ var viewModel = function() {
           wikiItems.push( "<li>" + wikiArray.link[i] + wikiArray.paragraph[i] + "</li>" );
         };
         
-        self.wikiLinksHtml('<ul id="wikipedia-links"><br>' + wikiItems + '</ul>');
+        self.wikiLinksHtml('<ul id="wikipedia-links">' + wikiItems + '</ul>');
         //$wikiElem.append();
         //$wikiElem.append(wikiItems);
       }
