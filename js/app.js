@@ -193,7 +193,7 @@ var viewModel = function() {
         };
 
         $wikiHeaderElem.text('Wikipedia Articles About ' + searchData + ':');
-        $wikiElem.replaceWith('<ul id="wikipedia-links"></ul>');
+        //$wikiElem.replaceWith('<ul id="wikipedia-links"></ul>');
 
         $.each( data[1], function( key, val ) {
           console.log(val);
