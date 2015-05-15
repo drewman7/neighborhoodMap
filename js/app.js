@@ -187,25 +187,46 @@ var viewModel = function() {
       var webLinkWiki = "";
       var wikiPageId = [];
       var firstParagraph = "";
+      var wikiArray = {
+        link: [],
+        paragraph: []
+      };
 
       $wikiHeaderElem.text('Wikipedia Articles About ' + searchData + ':');
 
       console.log(data[2].0);
 
-      $.each( data, function( key, val ) {
-        console.log(data);
+      $.each( data[1], function( key, val ) {
+        console.log(val);
         console.log(key);
-        webLinkWiki = "<a href='http://en.wikipedia.org/wiki/" + data[1] + "'>" + data[1] + "</a>";
+        //webLinkWiki = "<a href='http://en.wikipedia.org/wiki/" + val + "'>" + val + "</a>";
+        wikiArray.link.push( "<a href='http://en.wikipedia.org/wiki/" + val + "'>" + val + "</a>" );
         //console.log(webLinkWiki);
-        if (data[2] === null) {
-          firstParagraph = "<p></p>";
-        } else {
-          firstParagraph = "<p>" + data[2] + "</p>";
-        };
-        wikiItems.push( "<li>" + webLinkWiki + firstParagraph + "</li>" );
+        //if (data[2] === null) {
+        //  firstParagraph = "<p></p>";
+        //} else {
+        //  firstParagraph = "<p>" + data[2] + "</p>";
+        //};
+
       });
 
+      $.each( data[2], function( key, val ) {
+        console.log(val);
+        console.log(key);
+        //console.log(webLinkWiki);
+        wikiArray.paragraph.push("<p>" + data[2] + "</p>");
+        //if (data[2] === null) {
+        //  firstParagraph = "<p></p>";
+        //} else {
+        //  firstParagraph = "<p>" + data[2] + "</p>";
+        //};
 
+      });
+
+      for (var i = 0; i < wikiArray.link.length; i++) {
+        wikiItems.push( "<li>" + wikiArray.link[i] + wikiArray.paragraph[i] + "</li>" );
+      };
+      
       $wikiElem.append();
       $wikiElem.append(wikiItems);
     }
