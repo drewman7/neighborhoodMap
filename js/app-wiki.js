@@ -24,7 +24,6 @@ var viewModel = function() {
   this.pageTitle = ko.observable(modelData.title);
   this.markerListArray2 = ko.observableArray();
   this.filter = ko.observable();
-  this.wikiHeader = ko.observableArray('<h3>Relavent Wikipedia Articles:</h3>');
   
   this.mapInitialize = function() {
     modelData.geocoder = new google.maps.Geocoder();
@@ -180,7 +179,7 @@ var viewModel = function() {
     //Wikipedia API
     var wikiArticles = "http://en.wikipedia.org/w/api.php?format=json&action=opensearch&search=" + searchData + "&callback=wikiCallback";
     var $wikiElem = $('#wikipedia-links');
-    //var $wikiHeaderElem = $('#wikipedia-header');
+    var $wikiHeaderElem = $('#wikipedia-header');
     console.log(wikiArticles);
     $.ajax({
       url: wikiArticles, 
@@ -201,11 +200,9 @@ var viewModel = function() {
 
         console.log(data[1].length);
         if (data[1].length !== 0) {
-          self.wikiHeader('<h3>Wikipedia Articles About ' + searchData + ':</h3>');
-          //$wikiHeaderElem.text('Wikipedia Articles About ' + searchData + ':');
+          $wikiHeaderElem.text('Wikipedia Articles About ' + searchData + ':');
         } else{ 
-          self.wikiHeader('<h3>Sorry, there are no Wikipedia Articles About ' + searchData + '...</h3>');
-          //$wikiHeaderElem.text('Sorry, there are no Wikipedia Articles About ' + searchData + '...');
+          $wikiHeaderElem.text('Sorry, there are no Wikipedia Articles About ' + searchData + '...');
         };
         //$wikiElem.replaceWith('<ul id="wikipedia-links"></ul>');
         $('<ul id="wikipedia-links"></ul>').replaceAll($wikiElem);
@@ -236,8 +233,7 @@ var viewModel = function() {
       }
     })
       .error(function() {
-        self.wikiHeader('<h3>Wikipedia Articles About:</h3>');
-        //$wikiHeaderElem.text('***Error Loading Wikipedia Articles***');
+        $wikiHeaderElem.text('***Error Loading Wikipedia Articles***');
         $('<ul id="wikipedia-links"></ul>').replaceAll($wikiElem);
         $wikiElem = $('#wikipedia-links');
     });
