@@ -194,7 +194,7 @@ var viewModel = function() {
 
         $wikiHeaderElem.text('Wikipedia Articles About ' + searchData + ':');
         //$wikiElem.replaceWith('<ul id="wikipedia-links"></ul>');
-        ('<ul id="wikipedia-links"></ul>').replaceAll($wikiElem);
+        $('<ul id="wikipedia-links"></ul>').replaceAll($wikiElem);
 
         $.each( data[1], function( key, val ) {
           console.log(val);
