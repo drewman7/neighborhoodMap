@@ -182,59 +182,43 @@ var viewModel = function() {
         console.log(data);
         console.log(data[1]);
         console.log(data[2]);
-      var wikiItems = [];
-      var paritems = [];
-      var webLinkWiki = "";
-      var wikiPageId = [];
-      var firstParagraph = "";
-      var wikiArray = {
-        link: [],
-        paragraph: []
-      };
-
-      $wikiHeaderElem.text('Wikipedia Articles About ' + searchData + ':');
-
-
-
-      $.each( data[1], function( key, val ) {
-        console.log(val);
-        console.log(key);
-        //webLinkWiki = "<a href='http://en.wikipedia.org/wiki/" + val + "'>" + val + "</a>";
-        wikiArray.link.push( "<a href='http://en.wikipedia.org/wiki/" + val + "'>" + val + "</a>" );
-        //console.log(webLinkWiki);
-        //if (data[2] === null) {
-        //  firstParagraph = "<p></p>";
-        //} else {
-        //  firstParagraph = "<p>" + data[2] + "</p>";
-        //};
-
-      });
-
-      $.each( data[2], function( key, val ) {
-        console.log(val);
-        console.log(key);
-        //console.log(webLinkWiki);
-        if (val === null) {
-          wikiArray.paragraph.push("<p></p>");
-        } else {
-          wikiArray.paragraph.push("<p>" + val + "</p>");
+        var wikiItems = [];
+        var paritems = [];
+        var webLinkWiki = "";
+        var wikiPageId = [];
+        var firstParagraph = "";
+        var wikiArray = {
+          link: [],
+          paragraph: []
         };
-        //if (data[2] === null) {
-        //  firstParagraph = "<p></p>";
-        //} else {
-        //  firstParagraph = "<p>" + data[2] + "</p>";
-        //};
 
-      });
+        $wikiHeaderElem.text('Wikipedia Articles About ' + searchData + ':');
+        $wikiElem.replaceWith('<ul id="wikipedia-links"></ul>');
 
-      for (var i = 0; i < wikiArray.link.length; i++) {
-        wikiItems.push( "<li>" + wikiArray.link[i] + wikiArray.paragraph[i] + "</li>" );
+        $.each( data[1], function( key, val ) {
+          console.log(val);
+          console.log(key);
+          wikiArray.link.push( "<a href='http://en.wikipedia.org/wiki/" + val + "'>" + val + "</a>" );
+        });
+
+        $.each( data[2], function( key, val ) {
+          console.log(val);
+          console.log(key);
+          if (val === null) {
+            wikiArray.paragraph.push("<p></p>");
+          } else {
+            wikiArray.paragraph.push("<p>" + val + "</p>");
+          };
+        });
+
+        for (var i = 0; i < wikiArray.link.length; i++) {
+          wikiItems.push( "<li>" + wikiArray.link[i] + wikiArray.paragraph[i] + "</li>" );
+        };
+        
+        $wikiElem.append();
+        $wikiElem.append(wikiItems);
       };
-      
-      $wikiElem.append();
-      $wikiElem.append(wikiItems);
-    }
-    })
+    });
       .error(function() {
         $wikiHeaderElem.text('Error Loading Wikipedia Articles');
     });
@@ -243,7 +227,7 @@ var viewModel = function() {
 };
 
 
-//ko.applyBindings(new ViewModel());
+
 $(function() {
     ko.applyBindings(new viewModel());
 });
