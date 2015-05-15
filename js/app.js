@@ -1,6 +1,7 @@
 var modelData = {
   title: "Neighborhood MAP!",
-  markerListTitle: ko.observable("No Markers Shown!"),
+  markerListTitle: ko.observable(""),
+  markerListTitleText: "Markers On The Map:",
   geocoder: {},
   map: {},
   infowindow: {},
@@ -92,7 +93,7 @@ var viewModel = function() {
         console.log(self.markerListArray2()[i].name);
         console.log(self.markerListArray2()[i].marker);
         if (self.markerListArray2().length > 0) {
-          modelData.markerListTitle('Marker List:');
+          modelData.markerListTitle(modelData.markerListTitleText);
         } else {
           modelData.markerListTitle('');
         };
@@ -141,6 +142,12 @@ var viewModel = function() {
             };
           };
 
+          if (temp.length > 0) {
+            modelData.markerListTitle(modelData.markerListTitleText);
+          } else {
+            modelData.markerListTitle('');
+          };
+
           return temp;
         };
       };
@@ -167,7 +174,7 @@ var viewModel = function() {
       self.markerListArray2()[i].marker.setMap(null);
     };
     self.markerListArray2.removeAll();
-    modelData.markerListTitle("No Markers Shown!");
+    modelData.markerListTitle("");
   };
 
   this.articles = function(searchData) {
