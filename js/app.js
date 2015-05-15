@@ -194,7 +194,7 @@ var viewModel = function() {
 
       $wikiHeaderElem.text('Wikipedia Articles About ' + searchData + ':');
 
-      console.log(data[2].0);
+
 
       $.each( data[1], function( key, val ) {
         console.log(val);
