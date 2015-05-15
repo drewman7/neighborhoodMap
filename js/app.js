@@ -192,6 +192,7 @@ var viewModel = function() {
           paragraph: []
         };
 
+        console.log(data[1].length);
         if (data[1].length === 0) {
           $wikiHeaderElem.text('Wikipedia Articles About ' + searchData + ':');
         } else{ 
