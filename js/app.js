@@ -26,14 +26,17 @@ var viewModel = function() {
   this.wikiLinksHtml = ko.observable('Enter a neighborhood above to find relevant Wikipedia articles!');
   
   this.mapInitialize = function() {
+    alert('pause');
     modelData.geocoder = new google.maps.Geocoder();
     console.log(modelData.geocoder);
     var mapOptions = {
       center: { lat: 36.26, lng: -95.147},
       zoom: 3
     };
+    alert('pause');
     map = new google.maps.Map(document.getElementById('map-canvas'),
         mapOptions);
+    console.log(map);
   };
   
   google.maps.event.addDomListener(window, 'load', self.mapInitialize);
