@@ -62,7 +62,7 @@ var viewModel = function() {
   };
 
   this.locMarker = function() {
-    if (modelData.address !=== "") {
+    if (modelData.address !== "") {
       markerType = document.getElementById("markerType").value;
       var request = {
         location: addressGeo,
