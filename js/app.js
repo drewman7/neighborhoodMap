@@ -27,6 +27,7 @@ var viewModel = function() {
   
   this.mapInitialize = function() {
     modelData.geocoder = new google.maps.Geocoder();
+    console.log(modelData.geocoder);
     var mapOptions = {
       center: { lat: 36.26, lng: -95.147},
       zoom: 3
@@ -41,7 +42,7 @@ var viewModel = function() {
     address = document.getElementById("address").value;
     modelData.address = address;
     modelData.geocoder.geocode( { 'address': address}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
+      if (status === google.maps.GeocoderStatus.OK) {
         addressGeo = results[0].geometry.location;
         console.log(addressGeo);
         var mapOptions = {
