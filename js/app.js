@@ -62,15 +62,19 @@ var viewModel = function() {
   };
 
   this.locMarker = function() {
-    markerType = document.getElementById("markerType").value;
-    var request = {
-      location: addressGeo,
-      radius: 300,
-      query: markerType
+    if (modelData.address !=== "") {
+      markerType = document.getElementById("markerType").value;
+      var request = {
+        location: addressGeo,
+        radius: 300,
+        query: markerType
+      };
+      infowindow = new google.maps.InfoWindow();
+      var service = new google.maps.places.PlacesService(map);
+      service.textSearch(request, self.callback);
+    } else {
+      modelData.markerListTitle('Cannot find markers without a neighborhood!');
     };
-    infowindow = new google.maps.InfoWindow();
-    var service = new google.maps.places.PlacesService(map);
-    service.textSearch(request, self.callback);
   };
 
   this.callback = function(results, status) {
