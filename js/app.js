@@ -96,6 +96,8 @@ var viewModel = function() {
           modelData.markerListTitle('');
         };
       };
+    } else {
+        alert("Places Service was not successful for the following reason: " + status);
     };
   };
 
