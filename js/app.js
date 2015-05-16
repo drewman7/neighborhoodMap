@@ -157,6 +157,9 @@ var viewModel = function() {
   this.articles = function(searchData) {
     //Wikipedia API
     var wikiArticles = "http://en.wikipedia.org/w/api.php?format=json&action=opensearch&search=" + searchData + "&callback=wikiCallback";
+    var testArray = [];
+    testArray = searchData.split('&');
+    console.log(testArray);
     $.ajax({
       url: wikiArticles, 
       dataType: "jsonp",
