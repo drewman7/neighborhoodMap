@@ -163,7 +163,7 @@ var viewModel = function() {
         searchData = searchData + searchDataArray[i];
       };
     }
-    console.log(searchDataArray;)
+    console.log(searchDataArray);
     console.log(searchData);
 
     var wikiArticles = "http://en.wikipedia.org/w/api.php?format=json&action=opensearch&search=" + searchData + "&callback=wikiCallback";
