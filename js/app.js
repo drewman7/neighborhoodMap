@@ -86,13 +86,16 @@ var viewModel = function() {
         self.createMarker(results[i], i);
         self.markerListArray2.push(results[i]);
         self.markerListArray2()[i].marker = modelData.markerList.marker[i];
-        console.log(self.markerListArray2()[i].name);
-        console.log(self.markerListArray2()[i].marker);
+        //console.log(self.markerListArray2()[i].name);
+        //console.log(self.markerListArray2()[i].marker);
         if (self.markerListArray2().length > 0) {
           modelData.markerListTitle(modelData.markerListTitleText);
         } else {
           modelData.markerListTitle('');
         };
+      };
+      for (var i = 0; i < self.markerListArray2().length; i++) {
+        console.log(self.markerListArray2()[i]);
       };
     } else {
         alert("Places Service was not successful for the following reason: " + status);
