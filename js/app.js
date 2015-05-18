@@ -91,7 +91,7 @@ var viewModel = function() {
         if (self.markerListArray2().length > 0) {
           modelData.markerListTitle(modelData.markerListTitleText);
         } else {
-          modelData.markerListTitle('');
+          modelData.markerListTitle('No markers to display...');
         };
       };
     } else {
@@ -159,7 +159,7 @@ var viewModel = function() {
       self.markerListArray2()[i].marker.setMap(null);
     };
     self.markerListArray2.removeAll();
-    modelData.markerListTitle("");
+    modelData.markerListTitle('No markers to display...');
   };
 
   this.articles = function(searchData) {
