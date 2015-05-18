@@ -83,9 +83,10 @@ var viewModel = function() {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       modelData.markerList.info = results;
       for (var i = 0; i < results.length; i++) {
-        var markerIndex = self.markerListArray2().length + i;
+        
         self.createMarker(results[i], i);
         self.markerListArray2.push(results[i]);
+        var markerIndex = self.markerListArray2().length - 1;
         console.log(i);
         console.log(markerIndex);
         self.markerListArray2()[markerIndex].marker = modelData.markerList.marker[i];
