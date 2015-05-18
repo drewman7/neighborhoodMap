@@ -87,19 +87,12 @@ var viewModel = function() {
         self.createMarker(results[i], i);
         self.markerListArray2.push(results[i]);
         var markerIndex = self.markerListArray2().length - 1;
-        console.log(i);
-        console.log(markerIndex);
         self.markerListArray2()[markerIndex].marker = modelData.markerList.marker[i];
-        //console.log(self.markerListArray2()[i].name);
-        //console.log(self.markerListArray2()[i].marker);
         if (self.markerListArray2().length > 0) {
           modelData.markerListTitle(modelData.markerListTitleText);
         } else {
           modelData.markerListTitle('');
         };
-      };
-      for (var i = 0; i < self.markerListArray2().length; i++) {
-        console.log(self.markerListArray2()[i]);
       };
     } else {
         alert("Places Service was not successful for the following reason: " + status);
@@ -177,9 +170,7 @@ var viewModel = function() {
       for (var i = 0; i < searchDataArray.length; i++) {
         searchData = searchData + searchDataArray[i];
       };
-    }
-    console.log(searchDataArray);
-    console.log(searchData);
+    };
 
     var wikiArticles = "http://en.wikipedia.org/w/api.php?format=json&action=opensearch&search=" + searchData + "&callback=wikiCallback";
     console.log(wikiArticles);
