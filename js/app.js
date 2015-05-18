@@ -88,7 +88,7 @@ var viewModel = function() {
         self.markerListArray2.push(results[i]);
         console.log(i);
         console.log(markerIndex);
-        self.markerListArray2()[markerIndex - 1].marker = modelData.markerList.marker[i];
+        self.markerListArray2()[markerIndex].marker = modelData.markerList.marker[i];
         //console.log(self.markerListArray2()[i].name);
         //console.log(self.markerListArray2()[i].marker);
         if (self.markerListArray2().length > 0) {
