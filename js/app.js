@@ -30,6 +30,7 @@ var viewModel = function() {
     console.log(modelData.geocoder);
     var mapOptions = {
       center: { lat: 36.26, lng: -95.147},
+      height: 90%,
       zoom: 3
     };
     map = new google.maps.Map(document.getElementById('map-canvas'),

@@ -32,9 +32,11 @@
           <h1  data-bind="text: pageTitle" class="header-heading"></h1>
         </div>
       </div>
-      <div id="map-input">
-        <input id="address" type="textbox" value="Birch Run, MI">
-        <button data-bind="click: $root.codeAddress">Click me</button>
+      <div id="map-input" class="nav-bar">
+        <div class="container">
+          <input id="address" type="textbox" value="Birch Run, MI">
+          <button data-bind="click: $root.codeAddress">Click me</button>
+        </div>
       </div>
       <div id="map-canvas">
       </div>
