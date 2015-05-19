@@ -1,6 +1,6 @@
 var modelData = {
   title: "Neighborhood MAP!",
-  markerListTitle: ko.observable(""),
+  markerListTitle: ko.observable("Enter a neighborhood to apply markers..."),
   markerListTitleText: "Markers On The Map:",
   geocoder: {},
   map: {},

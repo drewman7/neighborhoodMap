@@ -34,6 +34,7 @@
       </div>
       <div id="map-input" class="nav-bar">
         <div class="container">
+          <h3  data-bind="text: pageTitle" class="header-heading">Input an address:</h3>
           <input id="address" type="textbox" value="Birch Run, MI" class="inBox">
           <button data-bind="click: $root.codeAddress" class="btn">Click me</button>
         </div>
@@ -51,7 +52,7 @@
       </div>
       <div class="content">
         <table>
-            <h3 data-bind="text: modelData.markerListTitle">Enter a neighborhood to apply markers...</h3>
+            <h3 data-bind="text: modelData.markerListTitle"></h3>
             <thead>
                 <tr><th></th></tr>
             </thead>
