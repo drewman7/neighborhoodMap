@@ -209,6 +209,7 @@ var viewModel = function() {
         for (var i = 0; i < wikiArray.link.length; i++) {
           //wikiItems.push( '<li>' + wikiArray.link[i] + wikiArray.paragraph[i] + '</li>' );
           wikiItems.concat(wikiItems,  '<li>' + wikiArray.link[i] + wikiArray.paragraph[i] + '</li>' );
+          console.log(wikiItems);
         };
         
         self.wikiLinksHtml('<ul id="wikipedia-links">' + wikiItems + '</ul>');
