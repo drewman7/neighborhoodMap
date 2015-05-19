@@ -209,7 +209,7 @@ Single styles
 {
     color: royalblue !important;
     background-color: white;
-    border-color: #222;
+    border-color: #fff;
     display: inline-block;
     padding: .5em 1em;
     margin-bottom: 0;
@@ -285,7 +285,8 @@ Wide styles
 
 .blockquote2
 {
+    color: black;
     padding: 1em 2em;
     margin: 0 0 2em;
-    border-left: 5px solid #eee;
+    border-left: 5px solid #222;
 }
