@@ -206,7 +206,7 @@ var viewModel = function() {
         });
 
         for (var i = 0; i < wikiArray.link.length; i++) {
-          wikiItems.push( "<li>" + wikiArray.link[i] + wikiArray.paragraph[i] + "</li>" );
+          wikiItems.push( '<li>' + wikiArray.link[i] + wikiArray.paragraph[i] + '</li>' );
         };
         
         self.wikiLinksHtml('<ul id="wikipedia-links">' + wikiItems + '</ul>');
