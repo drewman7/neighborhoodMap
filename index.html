@@ -35,7 +35,7 @@
       <div id="map-input" class="nav-bar">
         <div class="container">
           <input id="address" type="textbox" value="Birch Run, MI">
-          <button data-bind="click: $root.codeAddress">Click me</button>
+          <button data-bind="click: $root.codeAddress" class="btn">Click me</button>
         </div>
       </div>
       <div id="map-canvas">
@@ -43,9 +43,9 @@
       <div id="map-markers" class="nav-bar">
         <div class="container">
           <input id="markerType" type="textbox" value="">
-          <button data-bind="click: $root.locMarker">Click to add Markers!</button>
+          <button data-bind="click: $root.locMarker" class="btn">Add Markers!</button>
           <span id="map-markersClear">
-            <button data-bind="click: $root.locMarkerClear">Clear All Markers</button>
+            <button data-bind="click: $root.locMarkerClear" class="btn">Remove All</button>
           </span>
         </div>
       </div>
@@ -64,8 +64,8 @@
         </table>
       </div>
       <div class="wikipedia-container">
-          <span data-bind="html: wikiHeader"></span>
-          <ul><span data-bind="html: wikiLinksHtml"></span></ul>
+          <h3 data-bind="html: wikiHeader"></h3>
+          <ul><span data-bind="html: wikiLinksHtml" class="blockquote"></span></ul>
       </div>
 
   </body>
