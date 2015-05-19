@@ -80,7 +80,7 @@ Layout styles
 
 .header
 {
-    float: left;
+    text-align: left;
     color: #fff;
     background: #999;
     padding: 1em 1.25em;
@@ -97,6 +97,7 @@ Layout styles
 
 .content
 {
+    float: left;
     padding: 1em 1.25em;
     background-color: #fff;
 }
@@ -270,7 +271,7 @@ Wide styles
 
 
 .wikipedia-container {
-    float:left;
+    float:right;
     width:100%;
     padding:10px;
     margin-right: 10px;
