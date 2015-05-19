@@ -255,7 +255,7 @@ Wide styles
 @media (min-width: 42em)
 {
     .header { padding: 1.5em 3em; }
-    .nav-bar { padding: 1em 3em; }
+    .nav-bar { padding: 1em 1em; }
     .content { padding: 2em 3em; }
     .footer { padding: 2em 3em; }
     
