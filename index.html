@@ -50,9 +50,10 @@
         </div>
       </div>
       <div class="content">
-                <table>
+        <table>
+            <h3 data-bind="text: modelData.markerListTitle">Enter a neighborhood to apply markers...</h3>
             <thead>
-                <tr><th data-bind="text: modelData.markerListTitle"></th></tr>
+                <tr><th></th></tr>
             </thead>
             <p>Filter: <input data-bind="value: filter, valueUpdate: 'afterkeydown'" /></p>
             <tbody data-bind="foreach: filteredItems">
