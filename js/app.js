@@ -1,7 +1,7 @@
 var modelData = {
   title: "Neighborhood MAP!",
   markerListTitle: ko.observable("Enter a neighborhood to apply markers..."),
-  markerListTitleText: "Markers On The Map:",
+  markerListTitleText: "Markers On The Map ... Click to highlight and find Wikipedia articles:",
   geocoder: {},
   map: {},
   infowindow: {},
@@ -150,7 +150,6 @@ var viewModel = function() {
   this.infoWindowAppear = function(listIndex, data) {
     infowindow.setContent(data.name);
     infowindow.open(map, data.marker);
-    self.filter() = data.name;
     self.articles(data.name);
   };
 
