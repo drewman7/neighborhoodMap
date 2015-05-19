@@ -150,6 +150,7 @@ var viewModel = function() {
   this.infoWindowAppear = function(listIndex, data) {
     infowindow.setContent(data.name);
     infowindow.open(map, data.marker);
+    self.filter() = data.name;
     self.articles(data.name);
   };
 
