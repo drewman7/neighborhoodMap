@@ -80,6 +80,7 @@ Layout styles
 
 .header
 {
+    float: left;
     color: #fff;
     background: #999;
     padding: 1em 1.25em;
