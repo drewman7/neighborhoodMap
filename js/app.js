@@ -213,7 +213,8 @@ var viewModel = function() {
           tempString = '<li>' + wikiArray.link[i] + wikiArray.paragraph[i] + '</li>';
           tempWikiItems = wikiItems;
           console.log(tempString);
-          wikiItems.concat(tempWikiItems, tempString );
+          //wikiItems.concat(tempWikiItems, tempString );
+          wikiItems = wikiItems + tempString;
           console.log(wikiItems);
         };
         
