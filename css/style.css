@@ -98,6 +98,7 @@ Layout styles
 .content
 {
     float: left;
+    max-width: 300px;
     padding: 1em 1.25em;
     background-color: #fff;
 }
@@ -288,6 +289,6 @@ Wide styles
 
 .blockquote {
     padding: 1em 2em;
-    margin: 0 0 2em;
+    margin: 2em 0 2em;
     border-left: 5px solid #eee;
 }
