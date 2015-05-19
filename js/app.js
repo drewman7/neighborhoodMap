@@ -210,6 +210,7 @@ var viewModel = function() {
         };
         
         self.wikiLinksHtml('<ul id="wikipedia-links">' + wikiItems + '</ul>');
+        console.log(wikiItems);
       }
     })
       .error(function() {
