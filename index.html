@@ -56,10 +56,10 @@
       <div class="content">
         <table>
             <h3 data-bind="text: modelData.markerListTitle" class="textMargin"></h3>
+            <p class="textBlue">Markers Filter: <input data-bind="value: filter, valueUpdate: 'afterkeydown'" class="inBox" /></p>
             <thead>
                 <tr><th></th></tr>
             </thead>
-            <p class="textBlue">Markers Filter: <input data-bind="value: filter, valueUpdate: 'afterkeydown'" class="inBox" /></p>
             <tbody data-bind="foreach: filteredItems">
                 <tr>
                     <td data-bind="text: name, click: $root.infoWindowAppear.bind($index, $data)"></td>
@@ -68,7 +68,7 @@
         </table>
       </div>
       <div class="blockquote">
-          <h3 data-bind="html: wikiHeader" class="textMargin"></h3>
+          <h4 data-bind="html: wikiHeader" class="textMargin"></h4>
           <ul><span data-bind="html: wikiLinksHtml"></span></ul>
       </div>
 
