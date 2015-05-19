@@ -33,7 +33,6 @@ p
 {
     margin: 0 0 1.5em;
     line-height: 1.5;
-    color: royalblue !important;
 }
 
 blockquote
@@ -217,7 +216,7 @@ Single styles
     line-height: 1.2;
     vertical-align: middle;
     cursor: pointer;
-    border: 1px solid transparent;
+    border: 1px solid;
     border-radius: .2em;
     text-decoration: none;
 }
@@ -283,10 +282,6 @@ Wide styles
     background-color: rgba(255,255,255,0.7);
 }
 
-.blockquote2
-{
-    color: black;
-    padding: 1em 2em;
-    margin: 0 0 2em;
-    border-left: 5px solid #222;
+.textBlue {
+    color: royalblue !important;
 }

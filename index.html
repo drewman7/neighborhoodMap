@@ -55,7 +55,7 @@
             <thead>
                 <tr><th></th></tr>
             </thead>
-            <p>Filter: <input data-bind="value: filter, valueUpdate: 'afterkeydown'" class="inBox" /></p>
+            <p class="textBlue">Filter: <input data-bind="value: filter, valueUpdate: 'afterkeydown'" class="inBox" /></p>
             <tbody data-bind="foreach: filteredItems">
                 <tr>
                     <td data-bind="text: name, click: $root.infoWindowAppear.bind($index, $data)"></td>
