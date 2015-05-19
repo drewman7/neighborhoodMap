@@ -206,9 +206,14 @@ var viewModel = function() {
           };
         });
 
+        var tempString = "";
+        var tempWikiItems = "";
         for (var i = 0; i < wikiArray.link.length; i++) {
           //wikiItems.push( '<li>' + wikiArray.link[i] + wikiArray.paragraph[i] + '</li>' );
-          wikiItems.concat(wikiItems,  '<li>' + wikiArray.link[i] + wikiArray.paragraph[i] + '</li>' );
+          tempString = '<li>' + wikiArray.link[i] + wikiArray.paragraph[i] + '</li>';
+          tempWikiItems = wikiItems;
+          console.log(tempString);
+          wikiItems.concat(tempWikiItems, tempString );
           console.log(wikiItems);
         };
         
