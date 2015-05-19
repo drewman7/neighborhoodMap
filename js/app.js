@@ -178,7 +178,8 @@ var viewModel = function() {
       url: wikiArticles, 
       dataType: "jsonp",
       success: function( data ) {
-        var wikiItems = [];
+        //var wikiItems = [];
+        var wikiItems = "";
         var webLinkWiki = "";
         var firstParagraph = "";
         var wikiArray = {
@@ -206,7 +207,8 @@ var viewModel = function() {
         });
 
         for (var i = 0; i < wikiArray.link.length; i++) {
-          wikiItems.push( '<li>' + wikiArray.link[i] + wikiArray.paragraph[i] + '</li>' );
+          //wikiItems.push( '<li>' + wikiArray.link[i] + wikiArray.paragraph[i] + '</li>' );
+          wikiItems.concat(wikiItems,  '<li>' + wikiArray.link[i] + wikiArray.paragraph[i] + '</li>' );
         };
         
         self.wikiLinksHtml('<ul id="wikipedia-links">' + wikiItems + '</ul>');
