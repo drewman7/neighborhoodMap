@@ -187,9 +187,9 @@ var viewModel = function() {
         };
 
         if (data[1].length !== 0) {
-          self.wikiHeader('<h3>Wikipedia Articles About ' + searchData + ':</h3>');
+          self.wikiHeader('<h4>Wikipedia Articles About ' + searchData + ':</h4>');
         } else{ 
-          self.wikiHeader('<h3>Sorry, there are no Wikipedia Articles About ' + searchData + '...</h3>');
+          self.wikiHeader('<h4>Sorry, there are no Wikipedia Articles About ' + searchData + '...</h4>');
         };
         self.wikiLinksHtml('<ul id="wikipedia-links"></ul>');
 
