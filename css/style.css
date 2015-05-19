@@ -98,9 +98,9 @@ Layout styles
 .content
 {
     float: left;
-    max-width: 300px;
     padding: 1em 1.25em;
     background-color: #fff;
+    margin-right: 300px;
 }
 
 .footer
