@@ -62,10 +62,11 @@ table
 th, td
 {
     color: royalblue !important;
-    padding: .5em 1em;
+    padding: .2em .2em;
     vertical-align: top;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    font-size: .5em;
 }
 
 a:link { color: royalblue; }
@@ -284,5 +285,4 @@ Wide styles
 
 .textBlue {
     color: royalblue !important;
-    font: .2em/1.2 "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
 }
