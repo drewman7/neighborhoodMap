@@ -35,13 +35,6 @@ p
     line-height: 1.5;
 }
 
-blockquote
-{
-    padding: 1em 2em;
-    margin: 0 0 2em;
-    border-left: 5px solid #eee;
-}
-
 hr
 {
     height: 0;
@@ -213,7 +206,6 @@ Single styles
     display: inline-block;
     padding: .5em 1em;
     margin-bottom: 0;
-    margin-top: .5em;
     font-weight: 400;
     line-height: 1.2;
     vertical-align: middle;
@@ -286,4 +278,14 @@ Wide styles
 
 .textBlue {
     color: royalblue !important;
+}
+
+.textMargin {
+    margin-bottom: 1em;
+}
+
+.blockquote {
+    padding: 1em 2em;
+    margin: 0 0 2em;
+    border-left: 5px solid #eee;
 }
