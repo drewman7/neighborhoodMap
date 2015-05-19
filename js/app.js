@@ -1,7 +1,7 @@
 var modelData = {
   title: "Neighborhood MAP!",
-  markerListTitle: ko.observable("Enter a neighborhood to apply markers..."),
-  markerListTitleText: "Markers On The Map ... Click marker in list to highlight on map above and find Wikipedia articles (below):",
+  markerListTitle: ko.observable("Enter an address to apply markers..."),
+  markerListTitleText: "Markers On The Map ... Click marker in list to highlight on map above and find Wikipedia articles (shwon below list):",
   geocoder: {},
   map: {},
   infowindow: {},
