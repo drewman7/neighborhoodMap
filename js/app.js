@@ -331,7 +331,7 @@ var viewModel = function() {
         };
 
         // Clears the wikipedia article list DOM/view section
-        self.wikiLinksHtml('<ul id="wikipedia-links"></ul>');
+        self.clearWikiSection();
 
         // Creates a hyperlink DOM element for each data item
         // Places it in the wikiArray link array
@@ -365,6 +365,11 @@ var viewModel = function() {
         self.wikiLinksHtml('<ul id="wikipedia-links"></ul>');
     });
   };
+};
+
+this.clearWikiSection = function() {
+        // Clears the wikipedia article list DOM/view section
+        self.wikiLinksHtml('<ul id="wikipedia-links"></ul>');
 };
 
 
