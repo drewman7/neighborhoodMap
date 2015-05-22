@@ -369,6 +369,7 @@ var viewModel = function() {
   };
 
   this.clearWikiSection = function() {
+          self.wikiHeader('<h4>Wikipedia Articles Section Cleared...</h4>');
           // Clears the wikipedia article list DOM/view section
           self.wikiLinksHtml('<ul id="wikipedia-links"></ul>');
   };
