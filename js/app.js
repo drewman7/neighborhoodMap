@@ -365,12 +365,15 @@ var viewModel = function() {
         self.wikiLinksHtml('<ul id="wikipedia-links"></ul>');
     });
   };
+
+  this.clearWikiSection = function() {
+          // Clears the wikipedia article list DOM/view section
+          self.wikiLinksHtml('<ul id="wikipedia-links"></ul>');
+  };
+  
 };
 
-this.clearWikiSection = function() {
-        // Clears the wikipedia article list DOM/view section
-        self.wikiLinksHtml('<ul id="wikipedia-links"></ul>');
-};
+
 
 
 // This function call initiates the knockoutjs viewModel function and binds it to the web page
