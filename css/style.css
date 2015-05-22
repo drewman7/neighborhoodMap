@@ -96,7 +96,7 @@ Layout styles
 
 .content
 {
-    max-width: 200px
+    max-width: 200px;
     float: left;
     padding: 1em 1.25em;
     background-color: #eee;
