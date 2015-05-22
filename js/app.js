@@ -231,6 +231,8 @@ var viewModel = function() {
     // This removes all the markers in the list which updates the DOM/view automatically
     self.markerListArray2.removeAll();
     modelData.markerListTitle('No markers to display...');  // tells the user the list is empty
+    // Clears the wikipedia article list DOM/view section
+    self.clearWikiSection();
   };
 
 
@@ -370,7 +372,7 @@ var viewModel = function() {
           // Clears the wikipedia article list DOM/view section
           self.wikiLinksHtml('<ul id="wikipedia-links"></ul>');
   };
-  
+
 };
 
 
