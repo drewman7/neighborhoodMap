@@ -247,7 +247,7 @@ Single styles
 Wide styles
 ------------------------*/
 
-@media (min-width: 24em)
+@media (min-width: 24em) and (min-height: 400px)
 {
     .header { padding: 1.5em 3em; }
     .nav-bar { padding: 1em 1em; }
