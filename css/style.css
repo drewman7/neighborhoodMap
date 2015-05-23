@@ -263,6 +263,29 @@ Wide styles
     }
 }
 
+ 
+/* Large desktop */
+@media (min-width: 1200px) {
+
+}
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+    .mapCanvasCss { height: 300px; }
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+    .mapCanvasCss { height: 100px; }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+    .mapCanvasCss { height: 200px; }
+}
+
+
+
 
 .textBlue {
     color: royalblue !important;
@@ -284,4 +307,8 @@ Wide styles
     border-left: 5px solid #ccc;
     text-align: left;
     background-color: #eee;
+}
+
+.mapCanvasCss {
+    height: 400px;
 }
