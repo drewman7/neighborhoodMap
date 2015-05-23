@@ -72,17 +72,13 @@ a:active { color: red; }
 Layout styles
 ------------------------*/
 
-.container
-{
-    margin: 0 auto;
-}
-
 .header
 {
     text-align: left;
     color: #fff;
     background: #999;
     padding: 1em 1.25em;
+    margin: 0 auto;
 }
 
 .header-heading { margin: 0; }
@@ -92,15 +88,6 @@ Layout styles
     color: #fff;
     background: #000;
     padding: 0;
-}
-
-.content
-{
-    max-width: 200px;
-    float: left;
-    padding: 1em 1.25em;
-    background-color: #eee;
-    border-left: 5px solid #ccc;
 }
 
 .footer
@@ -271,14 +258,6 @@ Wide styles
 }
 
 
-.wikipedia-container {
-    float:right;
-    width:100%;
-    padding:10px;
-    margin-right: 10px;
-    background-color: rgba(255,255,255,0.7);
-}
-
 .textBlue {
     color: royalblue !important;
 }
@@ -287,10 +266,16 @@ Wide styles
     margin-bottom: 1em;
 }
 
+.content
+{
+    padding: 1em 1.25em;
+    background-color: #eee;
+    border-left: 5px solid #ccc;
+}
+
 .blockquote {
     padding: 2em 1.25em;
     border-left: 5px solid #ccc;
     text-align: left;
     background-color: #eee;
-    flex-grow: 1;
 }
