@@ -71,16 +71,16 @@
       <div class="row-fluid">
         <div class="span12">
           <div id="map-markers" class="nav-bar">
-            <div class='span4'>
+            <div>
               <h4>Local interest? (ex. pizza):
                 <!-- marker input box and button -->
                 <input id="markerType" type="textbox" value="" class="inBox inBox2">
-            </div>
-            <div class='span8'>
-                <button data-bind="click: $root.locMarker" class="btn btn-primary">Add Markers!</button>
-                <!-- remove all markers button -->
-                <span id="map-markersClear">
-                  <button data-bind="click: $root.locMarkerClear" class="btn btn-primary">Remove All</button>
+                <span>
+                  <button data-bind="click: $root.locMarker" class="btn btn-primary">Add Markers!</button>
+                  <!-- remove all markers button -->
+                  <span id="map-markersClear">
+                    <button data-bind="click: $root.locMarkerClear" class="btn btn-primary">Remove All</button>
+                  </span>
                 </span>
               </h4>
             </div>
