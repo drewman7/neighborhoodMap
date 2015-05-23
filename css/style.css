@@ -209,6 +209,7 @@ Single styles
     border: 1px solid;
     border-radius: .2em;
     text-decoration: none;
+    max-width: 100px;
 }
 
 .table
@@ -276,7 +277,7 @@ Wide styles
  
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
-    .mapCanvasCss { height: 100px; }
+    .mapCanvasCss { height: 150px; }
 }
 
 /* Landscape phones and down */
