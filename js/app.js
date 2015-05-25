@@ -16,7 +16,7 @@
 // modelData contains the global base variables for the web application
 var modelData = {
   title: 'Neighborhood MAP!',         // Title variable for the entire app; placed in the header 
-  markerListTitle: ko.observable('Enter an address to apply markers..."',   // Title knockoutjs 
+  markerListTitle: ko.observable('Enter an address to apply markers...'),   // Title knockoutjs 
                                       // variable for the marker list section
   markerListTitleText: 'Markers On The Map ... Click marker in list to highlight on map above and find Wikipedia articles:',     //Title text container
   geocoder: {},                       // geocoder global variable used for gooble map geolocation data
