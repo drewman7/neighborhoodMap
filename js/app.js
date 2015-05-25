@@ -71,7 +71,7 @@ var viewModel = function() {
       zoom: 3
     };
     // calls the google map API and sets the map variable
-    map = new google.maps.Map(document.getElementById('map-canvas'),
+    modelData.map = new google.maps.Map(document.getElementById('map-canvas'),
         mapOptions);
   };
   
@@ -99,11 +99,11 @@ var viewModel = function() {
           zoom: 15
         };
         // updates the google map API and sets the map variable
-        map = new google.maps.Map(document.getElementById('map-canvas'),
+        modelData.map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);  
 
         // sets the modelData map variable for future reference
-        modelData.map = map;
+        //modelData.map = map;
 
       } else {
         // alert the user if the geocode lookup was not successful
@@ -135,7 +135,7 @@ var viewModel = function() {
         query: modelData.markerType
       };
       modelData.infowindow = new google.maps.InfoWindow();                  // initiates the infowindow
-      var service = new google.maps.places.PlacesService(map);    // sets up place service
+      var service = new google.maps.places.PlacesService(modelData.map);    // sets up place service
       service.textSearch(request, self.callback);                 // calls textSearch and
                                                                   // and calls callback 
                                                                   // with results
@@ -194,7 +194,7 @@ var viewModel = function() {
     // marker object variable is set up by calling the google map api marker capaibility
     // The current map and marker location is passed into the api
     var marker = new google.maps.Marker({             
-      map: map,
+      map: modelData.map,
       position: place.geometry.location
     });
     // marker object is captured to pass into the marke array
@@ -202,7 +202,7 @@ var viewModel = function() {
     // addListener function is called to create the infowindow content for the marker                                                            
     google.maps.event.addListener(marker, 'click', function() {
       modelData.infowindow.setContent(place.name);
-      modelData.infowindow.open(map, this);
+      modelData.infowindow.open(modelData.map, this);
     });
   };
 
@@ -213,7 +213,7 @@ var viewModel = function() {
   // This code was provided as part of the google map api and adapted for knockout js
   self.infoWindowAppear = function(listIndex, data) {
     modelData.infowindow.setContent(data.name);
-    modelData.infowindow.open(map, data.marker);
+    modelData.infowindow.open(modelData.map, data.marker);
     // calls the wikipedia articles lookup function
     self.articles(data.name);
   };
@@ -248,7 +248,7 @@ var viewModel = function() {
           // for loop iterates through the list array restoring the markers to the map
           for (var i = 0; i < self.markerListArray2().length; i++) {
             if (self.markerListArray2()[i].marker !== undefined) {
-              self.markerListArray2()[i].marker.setMap(map);
+              self.markerListArray2()[i].marker.setMap(modelData.map);
             }
           }
           // the list array is returned to update the list on the DOM/view
@@ -264,7 +264,7 @@ var viewModel = function() {
           for (var i = 0; i < self.markerListArray2().length; i++) {
             if (self.markerListArray2()[i].name.toLowerCase().search(self.filter().toLowerCase()) !== -1) {
               temp.push(self.markerListArray2()[i]);
-              self.markerListArray2()[i].marker.setMap(map);
+              self.markerListArray2()[i].marker.setMap(modelData.map);
             } else {
               self.markerListArray2()[i].marker.setMap(null);
             }
