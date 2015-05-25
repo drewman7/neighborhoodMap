@@ -47,13 +47,13 @@ var viewModel = function() {
   var self = this;    // Sets up 'self' variable to be used for proper scope in functions
 
   // The following are the initialization of oberservables for the knockoutjs methodology
-  this.pageTitle = ko.observable(modelData.title);  // observable for the title in the header
-  this.markerListArray2 = ko.observableArray();     // observable array for the marker list
-  this.filter = ko.observable();                    // observable for the filter criteria
-  this.wikiHeader = ko.observable("<h3>Relavent Wikipedia Articles:</h3>");
+  self.pageTitle = ko.observable(modelData.title);  // observable for the title in the header
+  self.markerListArray2 = ko.observableArray();     // observable array for the marker list
+  self.filter = ko.observable();                    // observable for the filter criteria
+  self.wikiHeader = ko.observable("<h3>Relavent Wikipedia Articles:</h3>");
                                                     // observable (above) for the wikipedia
                                                     // header section
-  this.wikiLinksHtml = ko.observable('Enter a neighborhood above to find relevant Wikipedia articles!');
+  self.wikiLinksHtml = ko.observable('Enter a neighborhood above to find relevant Wikipedia articles!');
                                                     // observable(above) for the html containing
                                                     // the wikipedia articles
   
@@ -62,7 +62,7 @@ var viewModel = function() {
   // No address (neighborhood) has been entered at this point.
   // The initial location is a zoomed out view of North America
   // This code was provided as part of the google map api and adapted for knockout js
-  this.mapInitialize = function() {
+  self.mapInitialize = function() {
     // initiates the geocoder for google maps
     modelData.geocoder = new google.maps.Geocoder();
     // options for the map api
@@ -87,13 +87,12 @@ var viewModel = function() {
   // lookup is unsuccessful.  Next, the function to clear any markers is called.  Finally,
   // the wikipedia lookup function is called
   // This code was provided as part of the google map api and adapted for knockout js
-  this.codeAddress = function() {
-    address = document.getElementById("address").value;   // address is pulled from the input box
-    modelData.address = address;                          // address is stored in the modelData
+  self.codeAddress = function() {
+    modelData.address = document.getElementById("address").value;   // address is pulled from the input box
     // calls the google map geocoder lookup for the address to obtain the lat/long of the address
-    modelData.geocoder.geocode( { 'address': address}, function(results, status) {
+    modelData.geocoder.geocode( { 'address': modelData.address}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
-        addressGeo = results[0].geometry.location;        // lat/long stored in the modelData
+        modelData.addressGeo = results[0].geometry.location;        // lat/long stored in the modelData
         // options for the map api
         var mapOptions = {
           center: results[0].geometry.location,           // Lat/long of the address
@@ -109,10 +108,10 @@ var viewModel = function() {
       } else {
         // alert the user if the geocode lookup was not successful
         alert("Geocode was not successful for the following reason: " + status);
-      };
+      }
     });
     self.locMarkerClear();       // calls the function to clear any markers
-    self.articles(address);      // calls the function to show wikipedia articles for the address
+    self.articles(modelData.address);      // calls the function to show wikipedia articles for the address
   };
 
 
@@ -124,18 +123,18 @@ var viewModel = function() {
   // Service component of the google map api.  The resuts of the textSearch function are
   // sent into the callback function.
   // This code was provided as part of the google map api and adapted for knockout js
-  this.locMarker = function() {
+  self.locMarker = function() {
     // if statement checks if an address has been entered.  If not, it displays an error message
     if (modelData.address !== "") {
-      markerType = document.getElementById("markerType").value;   // text pulled from markerType
+      modelData.markerType = document.getElementById("markerType").value;   // text pulled from markerType
       // request object sets up the parameters for the textSearch
       // incluces the current lat/long of the address/neighborhood
       var request = {                                             
-        location: addressGeo,
+        location: modelData.addressGeo,
         radius: 300,
-        query: markerType
+        query: modelData.markerType
       };
-      infowindow = new google.maps.InfoWindow();                  // initiates the infowindow
+      modelData.infowindow = new google.maps.InfoWindow();                  // initiates the infowindow
       var service = new google.maps.places.PlacesService(map);    // sets up place service
       service.textSearch(request, self.callback);                 // calls textSearch and
                                                                   // and calls callback 
@@ -143,7 +142,7 @@ var viewModel = function() {
     } else {
       // if no address, error message provided to user that an address is needed
       modelData.markerListTitle('Cannot find markers without a neighborhood!');
-    };
+    }
   };
 
 
@@ -154,7 +153,7 @@ var viewModel = function() {
   // list.  Through this process, it also calls the createMarker function to actually create the
   // marker and place it on the map.
   // This code was provided as part of the google map api and adapted for knockout js
-  this.callback = function(results, status) {
+  self.callback = function(results, status) {
     // If statement checks if the status returned from Places Service is ok.
     // If not, alert the user with an error message
     if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -177,12 +176,12 @@ var viewModel = function() {
           modelData.markerListTitle(modelData.markerListTitleText);
         } else {
           modelData.markerListTitle('No markers to display...');
-        };
-      };
+        }
+      }
     } else {
         // alerts the user if the status from the google map api places service status is not ok
         alert("Places Service was not successful for the following reason: " + status);
-    };
+    }
   };
 
 
@@ -191,7 +190,7 @@ var viewModel = function() {
   // the map.  It calls the marker capability in the google map api.  It also creates the 
   // infowindow text for each marker.  
   // This code was provided as part of the google map api and adapted for knockout js
-  this.createMarker = function(place, index) {
+  self.createMarker = function(place, index) {
     // marker object variable is set up by calling the google map api marker capaibility
     // The current map and marker location is passed into the api
     var marker = new google.maps.Marker({             
@@ -202,8 +201,8 @@ var viewModel = function() {
     modelData.markerList.marker[index] = marker;                  
     // addListener function is called to create the infowindow content for the marker                                                            
     google.maps.event.addListener(marker, 'click', function() {
-      infowindow.setContent(place.name);
-      infowindow.open(map, this);
+      modelData.infowindow.setContent(place.name);
+      modelData.infowindow.open(map, this);
     });
   };
 
@@ -212,9 +211,9 @@ var viewModel = function() {
   // This function is called when a user clicks on an item in the marker list.  It opens up
   // the info window an initiates a wikipedia article lookup on the item.
   // This code was provided as part of the google map api and adapted for knockout js
-  this.infoWindowAppear = function(listIndex, data) {
-    infowindow.setContent(data.name);
-    infowindow.open(map, data.marker);
+  self.infoWindowAppear = function(listIndex, data) {
+    modelData.infowindow.setContent(data.name);
+    modelData.infowindow.open(map, data.marker);
     // calls the wikipedia articles lookup function
     self.articles(data.name);
   };
@@ -223,11 +222,11 @@ var viewModel = function() {
   // locMarkerClear function - Removes and clears all the markers
   // This function goes throuigh the marker list array, removes the items, and removes the 
   // the markers on the map.  By updating the array, the DOM/view is updated.
-  this.locMarkerClear = function() {
+  self.locMarkerClear = function() {
     // for statement interates through the array hiding the markers on the map
     for (var i = 0; i < self.markerListArray2().length; i++) {
       self.markerListArray2()[i].marker.setMap(null);
-    };
+    }
     // This removes all the markers in the list which updates the DOM/view automatically
     self.markerListArray2.removeAll();
     modelData.markerListTitle('No markers to display...');  // tells the user the list is empty
@@ -239,7 +238,7 @@ var viewModel = function() {
   // With each letter entered by the user, the list and associated markers are updated to show
   // only those that meet the filter criteria.  This occurs automatically on the DOM/view due
   // to knockoutjs
-  this.filteredItems = ko.computed(function() {
+  self.filteredItems = ko.computed(function() {
       // if statement cheks to make sure there are items in the list befor filtering it
       if (self.markerListArray2().length > 0) {
         // if statement checks if there is any text in filter input box.  If not, restore all
@@ -250,8 +249,8 @@ var viewModel = function() {
           for (var i = 0; i < self.markerListArray2().length; i++) {
             if (self.markerListArray2()[i].marker !== undefined) {
               self.markerListArray2()[i].marker.setMap(map);
-            };
-          };
+            }
+          }
           // the list array is returned to update the list on the DOM/view
           return self.markerListArray2();       
         } else {
@@ -262,14 +261,14 @@ var viewModel = function() {
           // object.  The item marker is shown on the map.  If there is not a match, the
           // item is not placed into the temp array and the corresponding marker is hidden 
           // from the map.
-          for (var i = 0; i < self.markerListArray2().length; i++) {
+          for (i = 0; i < self.markerListArray2().length; i++) {
             if (self.markerListArray2()[i].name.toLowerCase().search(self.filter().toLowerCase()) !== -1) {
               temp.push(self.markerListArray2()[i]);
               self.markerListArray2()[i].marker.setMap(map);
             } else {
               self.markerListArray2()[i].marker.setMap(null);
-            };
-          };
+            }
+          }
 
           // if statement updates the marker list title based on  if there are any items in
           // the temp array.  If not, the title is set to blank
@@ -277,11 +276,11 @@ var viewModel = function() {
             modelData.markerListTitle(modelData.markerListTitleText);
           } else {
             modelData.markerListTitle('');
-          };
+          }
 
           // the temp array is returned to update the list on the DOM/view
           return temp;
-        };
+        }
       };
   }, this);
 
@@ -294,7 +293,7 @@ var viewModel = function() {
   // Base on the search results returned by the wikipedia api, the DOM/View is updated for
   // the wikipedia article list.  The lookup is performed using the serachData variable
   // that is passed in by the functions calling this function.
-  this.articles = function(searchData) {
+  self.articles = function(searchData) {
     // var searchDataArray and the following if statement are used to remove the '&'
     // character since this causes issues in the wikipedia search api.  The searchData
     // variable is split into a corresponding array when the & character is present.
@@ -307,8 +306,8 @@ var viewModel = function() {
       searchData = "";
       for (var i = 0; i < searchDataArray.length; i++) {
         searchData = searchData + searchDataArray[i];
-      };
-    };
+      }
+    }
 
     // Call the wikipedia api using searchData using an ajax request
     var wikiArticles = "http://en.wikipedia.org/w/api.php?format=json&action=opensearch&search=" + searchData + "&callback=wikiCallback";
@@ -328,7 +327,7 @@ var viewModel = function() {
           self.wikiHeader('<h4>Wikipedia Articles About ' + searchData + ':</h4>');
         } else{ 
           self.wikiHeader('<h4>Sorry, there are no Wikipedia Articles About ' + searchData + '...</h4>');
-        };
+        }
 
         // Clears the wikipedia article list DOM/view section
         self.wikiLinksHtml('<ul id="wikipedia-links"></ul>');
@@ -347,13 +346,13 @@ var viewModel = function() {
             wikiArray.paragraph.push("<p>No description available...</p>");
           } else {
             wikiArray.paragraph.push("<p>" + val + "</p>");
-          };
+          }
         });
 
         // Creates the wikiItems string which contains the DOM elements for each article
         for (var i = 0; i < wikiArray.link.length; i++) {
           wikiItems = wikiItems + '<li>' + wikiArray.link[i] + wikiArray.paragraph[i] + '</li>';
-        };
+        }
         
         // Updates the DOM using knockoutjs with the wikiItems array of DOM elements (articles)
         self.wikiLinksHtml('<ul id="wikipedia-links">' + wikiItems + '</ul>');
