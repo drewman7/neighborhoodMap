@@ -15,16 +15,16 @@
 
 // modelData contains the global base variables for the web application
 var modelData = {
-  title: "Neighborhood MAP!",         // Title variable for the entire app; placed in the header 
-  markerListTitle: ko.observable("Enter an address to apply markers..."),   // Title knockoutjs 
+  title: 'Neighborhood MAP!',         // Title variable for the entire app; placed in the header 
+  markerListTitle: ko.observable('Enter an address to apply markers..."',   // Title knockoutjs 
                                       // variable for the marker list section
-  markerListTitleText: "Markers On The Map ... Click marker in list to highlight on map above and find Wikipedia articles:",     //Title text container
+  markerListTitleText: 'Markers On The Map ... Click marker in list to highlight on map above and find Wikipedia articles:',     //Title text container
   geocoder: {},                       // geocoder global variable used for gooble map geolocation data
   map: {},                            // map global variable used for the google map
   infowindow: {},                     // infowindow global variable object used for the marker info windows
-  address: "",                        // contains the address
-  addressGeo: "",                     // contains the geolocation of the address
-  markerType: "",                     // contains the marker type value
+  address: '',                        // contains the address
+  addressGeo: '',                     // contains the geolocation of the address
+  markerType: '',                     // contains the marker type value
   markerList: {                       // contains the marker list and the info for the marker types
       marker: [],
       info: []
@@ -50,7 +50,7 @@ var viewModel = function() {
   self.pageTitle = ko.observable(modelData.title);  // observable for the title in the header
   self.markerListArray2 = ko.observableArray();     // observable array for the marker list
   self.filter = ko.observable();                    // observable for the filter criteria
-  self.wikiHeader = ko.observable("<h3>Relavent Wikipedia Articles:</h3>");
+  self.wikiHeader = ko.observable('<h3>Relavent Wikipedia Articles:</h3>');
                                                     // observable (above) for the wikipedia
                                                     // header section
   self.wikiLinksHtml = ko.observable('Enter a neighborhood above to find relevant Wikipedia articles!');
@@ -88,7 +88,7 @@ var viewModel = function() {
   // the wikipedia lookup function is called
   // This code was provided as part of the google map api and adapted for knockout js
   self.codeAddress = function() {
-    modelData.address = document.getElementById("address").value;   // address is pulled from the input box
+    modelData.address = document.getElementById('address').value;   // address is pulled from the input box
     // calls the google map geocoder lookup for the address to obtain the lat/long of the address
     modelData.geocoder.geocode( { 'address': modelData.address}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
@@ -107,7 +107,7 @@ var viewModel = function() {
 
       } else {
         // alert the user if the geocode lookup was not successful
-        alert("Geocode was not successful for the following reason: " + status);
+        alert('Geocode was not successful for the following reason: ' + status);
       }
     });
     self.locMarkerClear();       // calls the function to clear any markers
@@ -126,7 +126,7 @@ var viewModel = function() {
   self.locMarker = function() {
     // if statement checks if an address has been entered.  If not, it displays an error message
     if (modelData.address !== "") {
-      modelData.markerType = document.getElementById("markerType").value;   // text pulled from markerType
+      modelData.markerType = document.getElementById('markerType').value;   // text pulled from markerType
       // request object sets up the parameters for the textSearch
       // incluces the current lat/long of the address/neighborhood
       var request = {                                             
@@ -180,7 +180,7 @@ var viewModel = function() {
       }
     } else {
         // alerts the user if the status from the google map api places service status is not ok
-        alert("Places Service was not successful for the following reason: " + status);
+        alert('Places Service was not successful for the following reason: ' + status);
     }
   };
 
@@ -310,7 +310,7 @@ var viewModel = function() {
     }
 
     // Call the wikipedia api using searchData using an ajax request
-    var wikiArticles = "http://en.wikipedia.org/w/api.php?format=json&action=opensearch&search=" + searchData + "&callback=wikiCallback";
+    var wikiArticles = 'http://en.wikipedia.org/w/api.php?format=json&action=opensearch&search=' + searchData + '&callback=wikiCallback';
     $.ajax({
       url: wikiArticles, 
       dataType: "jsonp",
@@ -335,7 +335,7 @@ var viewModel = function() {
         // Creates a hyperlink DOM element for each data item
         // Places it in the wikiArray link array
         $.each( data[1], function( key, val ) {
-          wikiArray.link.push( "<a href='http://en.wikipedia.org/wiki/" + val + "'>" + val + "</a>" );
+          wikiArray.link.push( '<a href="http://en.wikipedia.org/wiki/' + val + '">' + val + '</a>' );
         });
 
         // Creates a paragraph DOM element for each data item (i.e. a description)
@@ -343,9 +343,9 @@ var viewModel = function() {
         $.each( data[2], function( key, val ) {
           // if statement etermins if any paragraph returned and adds the appropriate text
           if (val === "") {
-            wikiArray.paragraph.push("<p>No description available...</p>");
+            wikiArray.paragraph.push('<p>No description available...</p>');
           } else {
-            wikiArray.paragraph.push("<p>" + val + "</p>");
+            wikiArray.paragraph.push('<p>' + val + '</p>');
           }
         });
 
