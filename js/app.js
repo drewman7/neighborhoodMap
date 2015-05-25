@@ -43,7 +43,7 @@ var modelData = {
 //     filteredItems - Filters through the marker list based on the filter input box
 //     articles - Does a wikipedia lookup on the neighborhood or marker
 var viewModel = function() {
-
+  'use strict';
   var self = this;    // Sets up 'self' variable to be used for proper scope in functions
 
   // The following are the initialization of oberservables for the knockoutjs methodology
@@ -261,7 +261,7 @@ var viewModel = function() {
           // object.  The item marker is shown on the map.  If there is not a match, the
           // item is not placed into the temp array and the corresponding marker is hidden 
           // from the map.
-          for (i = 0; i < self.markerListArray2().length; i++) {
+          for (var i = 0; i < self.markerListArray2().length; i++) {
             if (self.markerListArray2()[i].name.toLowerCase().search(self.filter().toLowerCase()) !== -1) {
               temp.push(self.markerListArray2()[i]);
               self.markerListArray2()[i].marker.setMap(map);
@@ -281,7 +281,7 @@ var viewModel = function() {
           // the temp array is returned to update the list on the DOM/view
           return temp;
         }
-      };
+      }
   }, this);
 
 
