@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>The Neighborhood Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Andrew Totten, Email: drewmetier@outlook.com">
+
+    <!-- icons -->
+    <link rel="apple-touch-icon" href="imgages/apple-touch-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Styles -->
+    <style type="text/css">
+      html, body, #map-canvas { height: 84%; margin: 0; padding: 0;}
+    </style>
+
+    <!-- Scripts -->
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCe7uSYFqcOGM9Wnbb8MFnxJApewVCvmAU&libraries=places">
+    </script>
+    <script src="js/libs/jquery-2.1.3.min.js"></script>
+    <script src="js/libs/knockout-3.3.0.js"></script>
+    <script src="js/app.js"></script>
+  </head>
+  <body>
+      <!-- header container -->
+      <div id="title" class="header">
+        <div class="container">
+          <!-- page title header -->
+          <h1  data-bind="text: pageTitle" class="header-heading"></h1>
+        </div>
+      </div>
+      <!-- address/neighborhood input box and button container -->
+      <div id="map-input" class="nav-bar">
+        <div class="container">
+          <h4>Input an address:
+            <!-- address/neighborhood input box and button -->
+            <input id="address" type="textbox" value="" class="inBox">
+            <button data-bind="click: $root.codeAddress" class="btn">Click me</button>
+          </h4>
+        </div>
+      </div>
+      <!-- google map container -->
+      <div id="map-canvas">
+      </div>
+      <!-- marker input box, add markers button, an remove all markers button container -->
+      <div id="map-markers" class="nav-bar">
+        <div class="container">
+          <h4>Enter a marker category (ex. pizza):
+            <!-- marker input box and button -->
+            <input id="markerType" type="textbox" value="" class="inBox">
+            <button data-bind="click: $root.locMarker" class="btn">Add Markers!</button>
+            <!-- remove all markers button -->
+            <span id="map-markersClear">
+              <button data-bind="click: $root.locMarkerClear" class="btn">Remove All</button>
+            </span>
+          </h4>
+        </div>
+      </div>
+      <!-- marker list and wikipedia parent container -->
+      <div>
+        <!-- marker list and filter box container -->
+        <div class="content">
+          <table>
+              <h3 data-bind="text: modelData.markerListTitle" class="textMargin"></h3>
+              <!-- filter input box -->
+              <p class="textBlue">Markers Filter: <input data-bind="value: filter, valueUpdate: 'afterkeydown'" class="inBox" /></p>
+              <thead>
+                  <tr><th></th></tr>
+              </thead>
+              <!-- marker array list -->
+              <tbody data-bind="foreach: filteredItems">
+                  <tr>
+                      <td data-bind="text: name, click: $root.infoWindowAppear.bind($index, $data)"></td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+        <!-- wikipedia search results container -->
+        <div class="blockquote">
+            <h4 data-bind="html: wikiHeader" class="textMargin"></h4>
+            <ul><span data-bind="html: wikiLinksHtml"></span></ul>
+        </div>
+      </div>
+  </body>
+</html>

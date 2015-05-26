@@ -24,7 +24,7 @@ h1,h2,h3,h4,h5,h6
 
 h1 { font-size: 2.25em; } /* 36px */
 h2 { font-size: 1.75em; } /* 28px */
-/*h3 { font-size: 1.375em; }*/ /* 22px */
+h3 { font-size: 1.375em; } /* 22px */
 h4 { font-size: 1.125em; } /* 18px */
 h5 { font-size: 1em; } /* 16px */
 h6 { font-size: .875em; } /* 14px */
@@ -37,6 +37,7 @@ p
 
 hr
 {
+    height: 0;
     margin-top: 1em;
     margin-bottom: 2em;
     border: 0;
@@ -61,13 +62,6 @@ th, td
     font-size: .85em;
 }
 
-
-html
-{
-    height:100%;
-}
-
-
 a:link { color: royalblue; }
 a:visited { color: purple; }
 a:focus { color: black; }
@@ -78,13 +72,17 @@ a:active { color: red; }
 Layout styles
 ------------------------*/
 
+.container
+{
+    margin: 0 auto;
+}
+
 .header
 {
     text-align: left;
     color: #fff;
     background: #999;
-    padding: 0.5em 0.75em;
-    margin: 0 auto;
+    padding: 1em 1.25em;
 }
 
 .header-heading { margin: 0; }
@@ -94,6 +92,15 @@ Layout styles
     color: #fff;
     background: #000;
     padding: 0;
+}
+
+.content
+{
+    max-width: 200px;
+    float: left;
+    padding: 1em 1.25em;
+    background-color: #eee;
+    border-left: 5px solid #ccc;
 }
 
 .footer
@@ -156,7 +163,7 @@ Single styles
 
 .img-responsive { max-width: 100%; }
 
-/*.btn
+.btn
 {
     color: #fff !important;
     background-color: royalblue;
@@ -174,9 +181,9 @@ Single styles
     border-radius: .2em;
     text-decoration: none;
 }
-*/
 
-/*.btn:hover
+
+.btn:hover
 {
     color: #fff !important;
     background-color: green;
@@ -193,7 +200,7 @@ Single styles
     color: #fff !important;
     background-color: red;
 }
-*/
+
 .inBox
 {
     color: royalblue !important;
@@ -203,17 +210,12 @@ Single styles
     padding: .5em 1em;
     margin-bottom: 0;
     font-weight: 400;
-    line-height: 1;
+    line-height: 1.2;
     vertical-align: middle;
     cursor: pointer;
     border: 1px solid;
     border-radius: .2em;
     text-decoration: none;
-}
-
-.inBox2
-{
-    max-width: 100px;
 }
 
 .table
@@ -247,7 +249,7 @@ Single styles
 Wide styles
 ------------------------*/
 
-@media (min-width: 24em) and (min-height: 400px)
+@media (min-width: 24em)
 {
     .header { padding: 1.5em 3em; }
     .nav-bar { padding: 1em 1em; }
@@ -268,29 +270,14 @@ Wide styles
     }
 }
 
- 
-/* Large desktop */
-@media (min-width: 1200px) {
-    .mapCanvasCss { height: 400px; }
-}
- 
-/* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) {
-    .mapCanvasCss { height: 300px; }
-}
- 
-/* Landscape phone to portrait tablet */
-@media (max-width: 767px) {
-    .mapCanvasCss { height: 150px; }
-}
 
-/* Landscape phones and down */
-@media (max-width: 480px) {
-    .mapCanvasCss { height: 200px; }
+.wikipedia-container {
+    float:right;
+    width:100%;
+    padding:10px;
+    margin-right: 10px;
+    background-color: rgba(255,255,255,0.7);
 }
-
-
-
 
 .textBlue {
     color: royalblue !important;
@@ -300,16 +287,10 @@ Wide styles
     margin-bottom: 1em;
 }
 
-.content
-{
-    padding: 1em 1.25em;
-    background-color: #eee;
-    border-left: 5px solid #ccc;
-}
-
 .blockquote {
-    padding: 1em 1.25em;
+    padding: 2em 1.25em;
     border-left: 5px solid #ccc;
     text-align: left;
     background-color: #eee;
+    flex-grow: 1;
 }
