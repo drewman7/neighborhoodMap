@@ -89,6 +89,7 @@ var viewModel = function() {
   // This code was provided as part of the google map api and adapted for knockout js
   self.codeAddress = function() {
     modelData.address = document.getElementById('address').value;   // address is pulled from the input box
+    modelData.addressGeo = '';                                      // clears past geo data
     // calls the google map geocoder lookup for the address to obtain the lat/long of the address
     modelData.geocoder.geocode( { 'address': modelData.address}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
@@ -104,14 +105,14 @@ var viewModel = function() {
 
         // sets the modelData map variable for future reference
         //modelData.map = map;
+        self.locMarkerClear();       // calls the function to clear any markers
+        self.articles(modelData.address);      // calls the function to show wikipedia articles for the address
 
       } else {
         // alert the user if the geocode lookup was not successful
         alert('Geocode was not successful for the following reason: ' + status);
       }
     });
-    self.locMarkerClear();       // calls the function to clear any markers
-    self.articles(modelData.address);      // calls the function to show wikipedia articles for the address
   };
 
 
@@ -125,7 +126,7 @@ var viewModel = function() {
   // This code was provided as part of the google map api and adapted for knockout js
   self.locMarker = function() {
     // if statement checks if an address has been entered.  If not, it displays an error message
-    if (modelData.address !== "") {
+    if (modelData.address !== '' && modelData.addressGeo !== '') {
       modelData.markerType = document.getElementById('markerType').value;   // text pulled from markerType
       // request object sets up the parameters for the textSearch
       // incluces the current lat/long of the address/neighborhood
@@ -140,8 +141,14 @@ var viewModel = function() {
                                                                   // and calls callback 
                                                                   // with results
     } else {
-      // if no address, error message provided to user that an address is needed
-      modelData.markerListTitle('Cannot find markers without a neighborhood!');
+      
+      if (modelData.address === '') {
+        // if no address, error message provided to user that an address is needed
+        modelData.markerListTitle('Cannot find markers without a neighborhood!');
+      } else {
+        // if no addressGeo, error message provided to user that an address is needed
+        alert('Error:  Geocode unable to initiate.  Check network!');
+      }
     }
   };
 
