@@ -27,7 +27,7 @@ h2 { font-size: 1.75em; } /* 28px */
 /*h3 { font-size: 1.375em; }*/ /* 22px */
 h4 { font-size: 1.125em; } /* 18px */
 h5 { font-size: 1em; } /* 16px */
-h6 { font-size: .875em; } /* 14px */
+h6 { font-size: 0.875em; } /* 14px */
 
 p
 {
@@ -54,7 +54,7 @@ table
 th, td
 {
     color: royalblue !important;
-    padding: .2em .2em;
+    padding: 0.2em 0.2em;
     vertical-align: top;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -123,7 +123,7 @@ Nav
 .nav a
 {
     display: block;
-    padding: .7em 1.25em;
+    padding: 0.7em 1.25em;
     color: #fff;
     text-decoration: none;
     border-bottom: 1px solid gray;
@@ -156,58 +156,20 @@ Single styles
 
 .img-responsive { max-width: 100%; }
 
-/*.btn
-{
-    color: #fff !important;
-    background-color: royalblue;
-    border-color: #222;
-    display: inline-block;
-    padding: .5em 1em;
-    margin-bottom: 0;
-    font-weight: 400;
-    line-height: 1.2;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    cursor: pointer;
-    border: 1px solid transparent;
-    border-radius: .2em;
-    text-decoration: none;
-}
-*/
-
-/*.btn:hover
-{
-    color: #fff !important;
-    background-color: green;
-}
-
-.btn:focus
-{
-    color: #fff !important;
-    background-color: black;
-}
-
-.btn:active
-{
-    color: #fff !important;
-    background-color: red;
-}
-*/
 .inBox
 {
     color: royalblue !important;
     background-color: white;
     border-color: #fff;
     display: inline-block;
-    padding: .5em 1em;
+    padding: 0.5em 1em;
     margin-bottom: 0;
     font-weight: 400;
     line-height: 1;
     vertical-align: middle;
     cursor: pointer;
     border: 1px solid;
-    border-radius: .2em;
+    border-radius: 0.2em;
     text-decoration: none;
 }
 
@@ -253,13 +215,13 @@ Wide styles
     .nav-bar { padding: 1em 1em; }
     .content { padding: 2em 3em; }
     .footer { padding: 2em 3em; }
-    
+
     .nav li
     {
         display: inline;
         margin: 0 1em 0 0;
     }
-    
+
     .nav a
     {
         display: inline;
@@ -268,17 +230,17 @@ Wide styles
     }
 }
 
- 
+
 /* Large desktop */
-@media (min-width: 1200px) {
+@media (min-width: 979px) {
     .mapCanvasCss { height: 400px; }
 }
- 
+
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
     .mapCanvasCss { height: 300px; }
 }
- 
+
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
     .mapCanvasCss { height: 150px; }
